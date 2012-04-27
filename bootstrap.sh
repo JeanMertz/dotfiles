@@ -14,6 +14,48 @@ function pause {
 }
 
 
+
+
+function ask_if_installed {
+	ask "Did $1 install correctly? [yes/no]"
+	read installed
+	if [ $installed == "no" ]; then
+		eval install_\$1
+	else if [ ! $installed == "yes" ]; then
+		ask_if_installed $1
+	fi
+	fi
+}
+
+function ask_for_installation {
+	if [ $confirm_install == "yes" ]; then
+		install_ruby
+		log $(ruby -v)
+
+		log "Updating Rubygems..."
+		gem update --system >/dev/null
+		log "Current Rubygem version: $(gem --version)"
+
+		gem install rbenv-rehash --no-ri --no-rdoc >/dev/null || exit 1
+
+	else if [ ! $confirm_install == "no" ]; then
+		ask_for_installation
+	fi
+	fi
+}
+
+function install_ruby {
+	rbenv install
+	ask "Please type the version of ruby you want to install..."
+	read ruby_version
+	rbenv install $ruby_version
+
+	ask_if_installed "ruby"
+	rbenv global $ruby_version
+	rbenv rehash
+}
+
+
 echo -e "\033[1;32mInitializing Jean-iMac...\033[0m"
 
 WORK_DIR=/tmp/jean-imac-`date +%s`
@@ -98,3 +140,9 @@ if [ ! $(which ruby-build 2>/dev/null) ]; then
 else
 	log "Ruby-build found, continuing..."
 fi
+
+
+# Install latest ruby-build
+ask "Do you want to install a new Ruby version? [yes/no]"
+read confirm_install
+ask_for_installation
