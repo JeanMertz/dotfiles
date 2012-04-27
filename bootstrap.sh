@@ -71,3 +71,30 @@ if [[ ! $(git config --global user.name 2>/dev/null) ]]; then
 	git config --global user.email $git_email
 fi
 
+
+# Install rbenv
+log "Checking for rbenv..."
+if [ ! $(which rbenv 2>/dev/null) ]; then
+	log "Rbenv not found, installing..."
+	brew install rbenv
+
+	log "Adding rbenv path to .bash_profile"
+	echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+	source ~/.bash_profile
+
+	log "Rbenv installed"
+else
+	log "Rbenv found, continuing..."
+fi
+
+
+# Install ruby-build
+log "Checking for ruby-build..."
+if [ ! $(which ruby-build 2>/dev/null) ]; then
+	log "Ruby-build not found, installing..."
+	brew install ruby-build
+
+	log "Ruby-build installed"
+else
+	log "Ruby-build found, continuing..."
+fi
