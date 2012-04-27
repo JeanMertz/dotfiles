@@ -1,0 +1,3 @@
+[submodule "chef/cookbooks/homebrew"]
+	path = chef/cookbooks/homebrew
+	url = git://github.com/JeanMertz/chef-homebrew.git
