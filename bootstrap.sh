@@ -58,3 +58,16 @@ if [[ ! $(brew which git-flow 2>/dev/null) ]]; then
 	brew install git-flow
 	log "Git-flow installed"
 fi
+
+
+# Set git username and e-mail
+if [[ ! $(git config --global user.name 2>/dev/null) ]]; then
+	ask "Git Full name?"
+	read git_username
+	git config --global user.name $git_username
+
+	ask "Git email?"
+	read git_email
+	git config --global user.email $git_email
+fi
+
