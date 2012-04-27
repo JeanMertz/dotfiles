@@ -179,3 +179,11 @@ else
 	git clone git://github.com/JeanMertz/dotfiles.git ~/.dotfiles
 	cd ~/.dotfiles
 fi
+
+
+# Make sure /usr/local exists
+log "Checking for /usr/local directory..."
+if [ ! -d /usr/local ]; then
+  log "/usr/local directory not found, creating..."
+  sudo mkdir /usr/local
+fi
