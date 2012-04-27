@@ -187,3 +187,9 @@ if [ ! -d /usr/local ]; then
   log "/usr/local directory not found, creating..."
   sudo mkdir /usr/local
 fi
+
+
+# Run chef-solo
+log "Starting chef-solo run..."
+cd ~/.dotfiles/chef
+chef-solo -c config/solo.rb -j config/node.json
