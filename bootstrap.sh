@@ -28,3 +28,17 @@ if [ ! $(which git 2>/dev/null) ]; then
 	exit
 fi
 log "Git found, continuing..."
+
+
+# Install Homebrew and fix xcode locations
+log "Checking for Homebrew"
+if [ ! $(which brew 2>/dev/null) ]; then
+	/usr/bin/ruby -e "$(/usr/bin/curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+	echo "export PATH=/usr/local/bin:$PATH" >> ~/.bash_profile
+	source ~/.bash_profile
+	sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+fi
+
+# Make sure brew works as expected
+brew update >/dev/null
+log $(brew doctor)
