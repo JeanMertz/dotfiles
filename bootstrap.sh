@@ -146,3 +146,10 @@ fi
 ask "Do you want to install a new Ruby version? [yes/no]"
 read confirm_install
 ask_for_installation
+
+
+# Install chef-solo for further system setup
+if [ ! $(which chef-solo 2>/dev/null) ]; then
+	log "Installing chef gem..."
+	gem install chef --no-ri --no-rdoc >/dev/null || exit 1
+fi
