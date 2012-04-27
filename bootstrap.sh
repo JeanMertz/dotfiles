@@ -153,3 +153,18 @@ if [ ! $(which chef-solo 2>/dev/null) ]; then
 	log "Installing chef gem..."
 	gem install chef --no-ri --no-rdoc >/dev/null || exit 1
 fi
+
+
+# Set up SHH for github access
+if [ ! -f ~/.ssh/id_rsa.pub ]; then
+	log "Setting up SSH for Github access"
+	ask "Provide e-mail address for SSH"
+	read ssh_email
+
+	ssh-keygen -t rsa -C $ssh_email
+
+	log "This is your id_rsa.pub value:"
+	cat ~/.ssh/id_rsa.pub
+
+	pause "Please add the above key to Github. Press [enter] to continue..."
+fi
