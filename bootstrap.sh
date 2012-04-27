@@ -42,3 +42,10 @@ fi
 # Make sure brew works as expected
 brew update >/dev/null
 log $(brew doctor)
+
+# Install latest version of Git
+if [[ ! $(brew which git 2>/dev/null) ]]; then
+	log "Installing latest version of git..."
+	brew install git
+	log "Current git version: $(git --version)"
+fi
