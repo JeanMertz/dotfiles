@@ -43,9 +43,18 @@ fi
 brew update >/dev/null
 log $(brew doctor)
 
+
 # Install latest version of Git
 if [[ ! $(brew which git 2>/dev/null) ]]; then
 	log "Installing latest version of git..."
 	brew install git
 	log "Current git version: $(git --version)"
+fi
+
+
+# Install latest version of Git-flow
+if [[ ! $(brew which git-flow 2>/dev/null) ]]; then
+	log "Installing latest version of git-flow..."
+	brew install git-flow
+	log "Git-flow installed"
 fi
