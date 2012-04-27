@@ -168,3 +168,14 @@ if [ ! -f ~/.ssh/id_rsa.pub ]; then
 
 	pause "Please add the above key to Github. Press [enter] to continue..."
 fi
+
+
+# Clone JeanMertz/dotfiles
+log "Cloning JeanMertz/dotfiles to ~/.dotfiles"
+if [ -d ~/.dotfiles ]; then
+	error "~/.dotfiles already exists, please remove and rerun this file or manually manage the directory."
+	exit
+else
+	git clone git://github.com/JeanMertz/dotfiles.git ~/.dotfiles
+	cd ~/.dotfiles
+fi
