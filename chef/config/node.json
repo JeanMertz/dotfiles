@@ -1,6 +1,7 @@
 {
 	"run_list": [ 
 		"recipe[osx-configuration]",
+		"recipe[dropbox]",
 		"recipe[postgresql]",
 		"recipe[rubygems]"
 	]
