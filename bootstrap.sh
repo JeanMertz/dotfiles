@@ -68,8 +68,10 @@ if [ ! $(which git 2>/dev/null) ]; then
 	error "Git not found"
 	error "Please install Xcode 4.3 and the Xcode Developer Tools"
 	exit
+	log "Git installed, continuing..."
+else
+	log "Git found, continuing..."
 fi
-log "Git found, continuing..."
 
 
 # Install Homebrew and fix xcode locations
@@ -79,9 +81,13 @@ if [ ! $(which brew 2>/dev/null) ]; then
 	echo "export PATH=/usr/local/bin:$PATH" >> ~/.bash_profile
 	source ~/.bash_profile
 	sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+	log "Homebrew installed, updating..."
+else
+	log "Homebrew found, updating..."
 fi
 
-# Make sure brew works as expected
+
+# Make sure Homebrew works as expected
 brew update >/dev/null
 log $(brew doctor)
 
@@ -91,6 +97,7 @@ if [[ ! $(brew which git 2>/dev/null) ]]; then
 	log "Installing latest version of git..."
 	brew install git
 	log "Current git version: $(git --version)"
+	log "Git installed, current version: $(git --version)"
 fi
 
 
@@ -124,7 +131,7 @@ if [ ! $(which rbenv 2>/dev/null) ]; then
 	echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 	source ~/.bash_profile
 
-	log "Rbenv installed"
+	log "Rbenv installed, continuing..."
 else
 	log "Rbenv found, continuing..."
 fi
@@ -136,7 +143,7 @@ if [ ! $(which ruby-build 2>/dev/null) ]; then
 	log "Ruby-build not found, installing..."
 	brew install ruby-build
 
-	log "Ruby-build installed"
+	log "Ruby-build installed, continuing..."
 else
 	log "Ruby-build found, continuing..."
 fi
