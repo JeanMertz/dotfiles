@@ -62,6 +62,13 @@ function check_for_dropbox {
 	fi
 }
 
+function check_for_xcode {
+if [ ! $(which git 2>/dev/null) ]; then
+		pause "Please install Xcode 4.3 and the Xcode Developer Tools. Press [enter] to continue..."
+		check_for_xcode
+	fi
+}
+
 echo -e "\033[1;32mInitializing Mac configuration...\033[0m"
 
 WORK_DIR=/tmp/jean-imac-`date +%s`
@@ -90,8 +97,7 @@ fi
 log "Checking for Git"
 if [ ! $(which git 2>/dev/null) ]; then
 	error "Git not found"
-	error "Please install Xcode 4.3 and the Xcode Developer Tools"
-	exit
+	check_for_xcode
 	log "Git installed, continuing..."
 else
 	log "Git found, continuing..."
