@@ -1,85 +1,39 @@
 #!/bin/bash
 
-function log {
-  echo -e "\033[1;31m>> \033[0;34m$*\033[0m"
-}
-function error {
-  echo -e "\033[1;31m!! \033[1;31m$*\033[0m"
-}
-function ask {
-  echo -e "\033[1;32m?? \033[0;32m$*\033[0m"
-}
-function pause {
-   read -p "$*"
-}
+
+# Get given parameters and set correct values
+# $1 = location where dotfiles are stored (defaults to ~/dotfiles)
+if [ -z "$1" ]; then
+	dotfiles="${HOME}/dotfiles"
+else
+	dotfiles="$1"
+fi
 
 
+# Set base path variables
+WORK_DIR=/tmp/jean-imac-`date +%s`
+DOTFILES_DIR="$dotfiles"
+BOOTSTRAP_DIR=$( cd "$( dirname "$0" )" && pwd )
+DROPBOX_DIR="$(bash ${BOOTSTRAP_DIR}/utilities/get_dropbox_folder.sh)"
 
 
-function ask_if_installed {
-	ask "Did $1 install correctly? [yes/no]"
-	read installed
-	if [ $installed == "no" ]; then
-		eval install_\$1
-	else if [ ! $installed == "yes" ]; then
-		ask_if_installed $1
-	fi
-	fi
-}
+# Source all functions used throughout this script
+source "${BOOTSTRAP_DIR}/utilities/bootstrap_functions.sh"
 
-function ask_for_installation {
-	if [ $confirm_install == "yes" ]; then
-		install_ruby
-		log $(ruby -v)
 
-		log "Updating Rubygems..."
-		gem update --system >/dev/null
-		log "Current Rubygem version: $(gem --version)"
-
-		gem install rbenv-rehash --no-ri --no-rdoc >/dev/null || exit 1
-
-	else if [ ! $confirm_install == "no" ]; then
-		ask_for_installation
-	fi
-	fi
-}
-
-function install_ruby {
-	rbenv install
-	ask "Please type the version of ruby you want to install..."
-	read ruby_version
-	rbenv install $ruby_version
-
-	ask_if_installed "ruby"
-	rbenv global $ruby_version
-	rbenv rehash
-}
-
-function check_for_dropbox {
-	if [ ! -d ~/Dropbox ]; then
-		pause "Please set up Dropbox (login and sync dotfiles/). Press [enter] to continue..."
-		check_for_dropbox
-	fi
-}
-
-function check_for_xcode {
-if [ ! $(which git 2>/dev/null) ]; then
-		pause "Please install Xcode 4.3 and the Xcode Developer Tools. Press [enter] to continue..."
-		check_for_xcode
-	fi
-}
-
+# Here we go!
 echo -e "\033[1;32mInitializing Mac configuration...\033[0m"
 
-WORK_DIR=/tmp/jean-imac-`date +%s`
+
+# Create a tmp dir for all downloads/etc to go
 mkdir -p $WORK_DIR
 cd $WORK_DIR
 
 
 # Check if Dropbox is installed
 log "Checking for Dropbox"
-if [ ! -d ~/Dropbox ]; then
-	cd /tmp
+if [ ! -d "${HOME}/Dropbox" ]; then
+	cd $WORK_DIR
 	curl -L -o Dropbox.dmg https://www.dropbox.com/download?plat=mac
 	hdiutil mount Dropbox.dmg
 	cp -R '/Volumes/Dropbox Installer/Dropbox.app' '/Applications/Dropbox.app'
@@ -108,8 +62,8 @@ fi
 log "Checking for Homebrew"
 if [ ! $(which brew 2>/dev/null) ]; then
 	/usr/bin/ruby -e "$(/usr/bin/curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
-	echo "export PATH=/usr/local/bin:$PATH" >> ~/.bash_profile
-	source ~/.bash_profile
+	echo "export PATH=/usr/local/bin:$PATH" >> "${HOME}/.bash_profile"
+	source "${HOME}/.bash_profile"
 	sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
 	log "Homebrew installed, updating..."
 else
@@ -157,8 +111,8 @@ if [ ! $(which rbenv 2>/dev/null) ]; then
 	brew install rbenv
 
 	log "Adding rbenv path to .bash_profile"
-	echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-	source ~/.bash_profile
+	echo 'eval "$(rbenv init -)"' >> "${HOME}/.bash_profile"
+	source "${HOME}/.bash_profile"
 
 	log "Rbenv installed, continuing..."
 else
@@ -192,7 +146,7 @@ fi
 
 
 # Set up SHH for github access
-if [ ! -f ~/.ssh/id_rsa.pub ]; then
+if [ ! -f "${HOME}/.ssh/id_rsa.pub" ]; then
 	log "Setting up SSH for Github access"
 	ask "Provide e-mail address for SSH"
 	read ssh_email
@@ -200,41 +154,46 @@ if [ ! -f ~/.ssh/id_rsa.pub ]; then
 	ssh-keygen -t rsa -C $ssh_email
 
 	log "This is your id_rsa.pub value:"
-	cat ~/.ssh/id_rsa.pub
+	cat "${HOME}/.ssh/id_rsa.pub"
 
 	pause "Please add the above key to Github. Press [enter] to continue..."
 fi
 
 
-# Symlink .dotfiles
-if [ ! -d ~/.dotfiles ]; then
-	log "Creating symlink from ~/.dotfiles to ~/Dropbox/dotfiles"
-	ln -s ~/Dropbox/dotfiles ~/.dotfiles
+# Symlink dotfiles directory
+if [ ! -d "$DOTFILES_DIR" ]; then
+	log "Creating symlink from $DOTFILES_DIR to ${HOME}/Dropbox/dotfiles"
+	ln -s "${HOME}/Dropbox/dotfiles" "$DOTFILES_DIR"
 else
 	log "Existing dotfiles found, checking symlink target location..."
-	if [ ! $(readlink ~/.dotfiles 2>/dev/null) ]; then
-		log "~/.dotfiles is not a symlink, backing up to ~/dotfiles_bak"
-		mv ~/.dotfiles ~/dotfiles_bak
+	if [ ! $(readlink "$DOTFILES_DIR" 2>/dev/null) ]; then
+		log "$DOTFILES_DIR is not a symlink, backing up to ${DOTFILES_DIR}_bak"
+		mv "$DOTFILES_DIR" "${DOTFILES_DIR}_bak"
 
-		log "Creating symlink from ~/.dotfiles to ~/Dropbox/dotfiles"
-		ln -s ~/Dropbox/dotfiles ~/.dotfiles
+		log "Creating symlink from $DOTFILES_DIR to ${HOME}/Dropbox/dotfiles"
+		ln -s "${HOME}/Dropbox/dotfiles" "$DOTFILES_DIR"
 	else
-		if [[ $(readlink ~/.dotfiles 2>/dev/null) == */Dropbox/dotfiles ]]; then
+		if [[ $(readlink "$DOTFILES_DIR" 2>/dev/null) == "${HOME}/Dropbox/dotfiles" ]]; then
 			log "Correct symlink already exists, no action taken"
 		else
-			log "Symlink exists but points to incorrect location ($(readlink ~/.dotfiles))."
-			log "Backing up to ~/dotfiles_bak"
-			mv ~/.dotfiles ~/dotfiles_bak
+			log "Symlink exists but points to incorrect location ($(readlink \"$DOTFILES_DIR\"))."
+			log "Backing up to ${DOTFILES_DIR}_bak"
+			mv "$DOTFILES_DIR" "${DOTFILES_DIR}_bak"
 
-			log "Creating symlink from ~/.dotfiles to ~/Dropbox/dotfiles"
-			ln -s ~/Dropbox/dotfiles ~/.dotfiles
+			log "Creating symlink from $DOTFILES_DIR to ${HOME}/Dropbox/dotfiles"
+			ln -s "${HOME}/Dropbox/dotfiles" "$DOTFILES_DIR"
 		fi
 	fi
 fi
-log "Symlink created, continuing..."
+log "$DOTFILES_DIR symlink created, continuing..."
 
+# Symlink dotfiles in homedir
+source "${DOTFILES_DIR}/utilities/symlink-dotfiles.sh"
 
 # Run chef-solo
 log "Starting chef-solo run..."
-cd ~/.dotfiles/chef
+cd "${DOTFILES_DIR}/chef"
 chef-solo -c config/solo.rb -j config/node.json
+
+rm -R $WORK_DIR
+log "Still in the shell!"
