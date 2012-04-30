@@ -96,7 +96,6 @@ log $(brew doctor)
 if [[ ! $(brew which git 2>/dev/null) ]]; then
 	log "Installing latest version of git..."
 	brew install git
-	log "Current git version: $(git --version)"
 	log "Git installed, current version: $(git --version)"
 fi
 
@@ -177,23 +176,32 @@ if [ ! -f ~/.ssh/id_rsa.pub ]; then
 fi
 
 
-# Clone JeanMertz/dotfiles
-log "Cloning JeanMertz/dotfiles to ~/.dotfiles"
-if [ -d ~/.dotfiles ]; then
-	error "~/.dotfiles already exists, please remove and rerun this file or manually manage the directory."
-	exit
+# Symlink .dotfiles
+if [ ! -d ~/.dotfiles ]; then
+	log "Creating symlink from ~/.dotfiles to ~/Dropbox/dotfiles"
+	ln -s ~/Dropbox/dotfiles ~/.dotfiles
 else
-	git clone git://github.com/JeanMertz/dotfiles.git ~/.dotfiles
-	cd ~/.dotfiles
-fi
+	log "Existing dotfiles found, checking symlink target location..."
+	if [ ! $(readlink ~/.dotfiles 2>/dev/null) ]; then
+		log "~/.dotfiles is not a symlink, backing up to ~/dotfiles_bak"
+		mv ~/.dotfiles ~/dotfiles_bak
 
+		log "Creating symlink from ~/.dotfiles to ~/Dropbox/dotfiles"
+		ln -s ~/Dropbox/dotfiles ~/.dotfiles
+	else
+		if [[ $(readlink ~/.dotfiles 2>/dev/null) == */Dropbox/dotfiles ]]; then
+			log "Correct symlink already exists, no action taken"
+		else
+			log "Symlink exists but points to incorrect location ($(readlink ~/.dotfiles))."
+			log "Backing up to ~/dotfiles_bak"
+			mv ~/.dotfiles ~/dotfiles_bak
 
-# Make sure /usr/local exists
-log "Checking for /usr/local directory..."
-if [ ! -d /usr/local ]; then
-  log "/usr/local directory not found, creating..."
-  sudo mkdir /usr/local
+			log "Creating symlink from ~/.dotfiles to ~/Dropbox/dotfiles"
+			ln -s ~/Dropbox/dotfiles ~/.dotfiles
+		fi
+	fi
 fi
+log "Symlink created, continuing..."
 
 
 # Run chef-solo
