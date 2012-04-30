@@ -41,6 +41,9 @@ if [ ! -d "${HOME}/Dropbox" ]; then
 	rm Dropbox.dmg
 	open /Applications/Dropbox.app &
 	check_for_dropbox
+
+	$DROPBOX_DIR="$(bash ${BOOTSTRAP_DIR}/utilities/get_dropbox_folder.sh)"
+	
 	log "Dropbox installed, continuing..."
 else
 	log "Dropbox found, continuing..."
