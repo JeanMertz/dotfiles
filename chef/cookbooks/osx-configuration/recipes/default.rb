@@ -1,4 +1,5 @@
 # set default os x configuration
+# credits to https://github.com/mathiasbynens/dotfiles for original inspiration
 commands = [
 	{
 		'name' => 			'keyboard_ui',
