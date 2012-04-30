@@ -289,21 +289,21 @@ commands = [
 		'key' => 			'com.apple.finder EmptyTrashSecurely',
 		'type' => 			'bool',
 		'value' => 			'true'
-	},
-	{
-		'name' => 			'enable_ffm_terminal',
-		'description' =>	'Enable “focus follows mouse” for Terminal.app',
-		'key' => 			'com.apple.terminal FocusFollowsMouse',
-		'type' => 			'bool',
-		'value' => 			'true'
-	},
-	{
-		'name' => 			'enable_ffm_x11',
-		'description' =>	'Enable “focus follows mouse” in all X11 apps',
-		'key' => 			'org.x.X11 wm_ffm',
-		'type' => 			'bool',
-		'value' => 			'true'
-	}
+	}#,
+	# {
+	# 	'name' => 			'enable_ffm_terminal',
+	# 	'description' =>	'Enable “focus follows mouse” for Terminal.app',
+	# 	'key' => 			'com.apple.terminal FocusFollowsMouse',
+	# 	'type' => 			'bool',
+	# 	'value' => 			'true'
+	# },
+	# {
+	# 	'name' => 			'enable_ffm_x11',
+	# 	'description' =>	'Enable “focus follows mouse” in all X11 apps',
+	# 	'key' => 			'org.x.X11 wm_ffm',
+	# 	'type' => 			'bool',
+	# 	'value' => 			'true'
+	# }
 ]
 
 commands.each do |config|
