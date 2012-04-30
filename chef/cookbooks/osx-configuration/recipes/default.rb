@@ -61,7 +61,7 @@ commands = [
 		'description' =>	'Show Status bar in Finder',
 		'key' => 			'com.apple.finder ShowStatusBar',
 		'type' => 			'bool',
-		'value' => 			'true'
+		'value' => 			'false'
 	},
 	{
 		'name' => 			'expand_save_panel',
@@ -168,13 +168,13 @@ commands = [
 		'type' => 			'bool',
 		'value' => 			'true'
 	},
-	# {
-	# 	'name' => 			'finder_title_full_path',
-	# 	'description' =>	'Display full POSIX path as Finder window title',
-	# 	'key' => 			'com.apple.finder _FXShowPosixPathInTitle',
-	# 	'type' => 			'bool',
-	# 	'value' => 			'true'
-	# },
+	{
+		'name' => 			'finder_title_full_path',
+		'description' =>	'Display full POSIX path as Finder window title',
+		'key' => 			'com.apple.finder _FXShowPosixPathInTitle',
+		'type' => 			'bool',
+		'value' => 			'false'
+	},
 	{
 		'name' => 			'increase_window_resize_speec',
 		'description' =>	'Increase window resize speed for Cocoa applications',
@@ -289,21 +289,21 @@ commands = [
 		'key' => 			'com.apple.finder EmptyTrashSecurely',
 		'type' => 			'bool',
 		'value' => 			'true'
-	}#,
-	# {
-	# 	'name' => 			'enable_ffm_terminal',
-	# 	'description' =>	'Enable “focus follows mouse” for Terminal.app',
-	# 	'key' => 			'com.apple.terminal FocusFollowsMouse',
-	# 	'type' => 			'bool',
-	# 	'value' => 			'true'
-	# },
-	# {
-	# 	'name' => 			'enable_ffm_x11',
-	# 	'description' =>	'Enable “focus follows mouse” in all X11 apps',
-	# 	'key' => 			'org.x.X11 wm_ffm',
-	# 	'type' => 			'bool',
-	# 	'value' => 			'true'
-	# }
+	},
+	{
+		'name' => 			'enable_ffm_terminal',
+		'description' =>	'Enable “focus follows mouse” for Terminal.app',
+		'key' => 			'com.apple.terminal FocusFollowsMouse',
+		'type' => 			'bool',
+		'value' => 			'false'
+	},
+	{
+		'name' => 			'enable_ffm_x11',
+		'description' =>	'Enable “focus follows mouse” in all X11 apps',
+		'key' => 			'org.x.X11 wm_ffm',
+		'type' => 			'bool',
+		'value' => 			'false'
+	}
 ]
 
 commands.each do |config|
