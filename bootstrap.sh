@@ -56,7 +56,7 @@ function install_ruby {
 }
 
 
-echo -e "\033[1;32mInitializing Jean-iMac...\033[0m"
+echo -e "\033[1;32mInitializing Mac configuration...\033[0m"
 
 WORK_DIR=/tmp/jean-imac-`date +%s`
 mkdir -p $WORK_DIR
