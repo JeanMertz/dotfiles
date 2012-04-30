@@ -187,13 +187,16 @@ else
 fi
 log "$DOTFILES_DIR symlink created, continuing..."
 
+
 # Symlink dotfiles in homedir
 source "${DOTFILES_DIR}/utilities/symlink-dotfiles.sh"
+
 
 # Run chef-solo
 log "Starting chef-solo run..."
 cd "${DOTFILES_DIR}/chef"
 chef-solo -c config/solo.rb -j config/node.json
 
+
+# Clean up temporary directory
 rm -R $WORK_DIR
-log "Still in the shell!"
