@@ -55,12 +55,36 @@ function install_ruby {
 	rbenv rehash
 }
 
+function check_for_dropbox {
+	if [ ! -d ~/Dropbox ]; then
+		pause "Please set up Dropbox (login and sync dotfiles/). Press [enter] to continue..."
+		check_for_dropbox
+	fi
+}
 
 echo -e "\033[1;32mInitializing Mac configuration...\033[0m"
 
 WORK_DIR=/tmp/jean-imac-`date +%s`
 mkdir -p $WORK_DIR
 cd $WORK_DIR
+
+
+# Check if Dropbox is installed
+log "Checking for Dropbox"
+if [ ! -d ~/Dropbox ]; then
+	cd /tmp
+	curl -L -o Dropbox.dmg https://www.dropbox.com/download?plat=mac
+	hdiutil mount Dropbox.dmg
+	cp -R '/Volumes/Dropbox Installer/Dropbox.app' '/Applications/Dropbox.app'
+	hdiutil unmount "/Volumes/Dropbox Installer"
+	rm Dropbox.dmg
+	open /Applications/Dropbox.app &
+	check_for_dropbox
+	log "Dropbox installed, continuing..."
+else
+	log "Dropbox found, continuing..."
+fi
+
 
 # Check if Xcode is installed
 log "Checking for Git"
