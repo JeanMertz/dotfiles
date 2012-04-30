@@ -3,6 +3,7 @@
 		"recipe[osx-configuration]",
 		"recipe[dropbox]",
 		"recipe[postgresql]",
-		"recipe[rubygems]"
+		"recipe[rubygems]",
+		"recipe[sublime-text]"
 	]
 }
