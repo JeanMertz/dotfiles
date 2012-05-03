@@ -11,6 +11,16 @@
 		"recipe[git-flow]",
 		"recipe[git-extras]",
 		"recipe[hub]",
+		"recipe[bash]",
+		"recipe[bash-completion]",
+		"recipe[bash-rails-completion]",
+		"recipe[colordiff]",
+		"recipe[readline]",
+		"recipe[zsh]",
+		"recipe[zsh-lovers]",
+		"recipe[z]",
+		"recipe[tmux]",
+		"recipe[term]",
 		"recipe[rubygems]",
 		"recipe[sublime-text]"
 	]
