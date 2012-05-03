@@ -29,5 +29,7 @@
 		"recipe[rubygems]",
 		"recipe[sublime-text]"
 		"recipe[python]",
+		"recipe[node]",
+		"recipe[pow]",
 	]
 }
