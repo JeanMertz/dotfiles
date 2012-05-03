@@ -41,5 +41,6 @@
 		"recipe[redis]",
 		"recipe[phantomjs]",
 		"recipe[qt]",
+		"recipe[google-chrome]",
 	]
 }
