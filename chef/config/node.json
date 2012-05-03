@@ -1,5 +1,6 @@
 {
 	"run_list": [ 
+		"role[base]",
 		"recipe[dmg]",
 		"recipe[zip_app]",
 		"recipe[osx-configuration]",
