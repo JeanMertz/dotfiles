@@ -33,5 +33,6 @@
 		"recipe[pow]",
 		"recipe[ack]",
 		"recipe[ctags]",
+		"recipe[bcrypt]",
 	]
 }
