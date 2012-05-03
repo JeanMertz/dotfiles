@@ -1,3 +1,6 @@
 [submodule "chef/cookbooks/homebrew"]
 	path = chef/cookbooks/homebrew
 	url = git://github.com/JeanMertz/chef-homebrew.git
+[submodule "chef/cookbooks/zip_app"]
+	path = chef/cookbooks/zip_app
+	url = git://github.com/fnichol/chef-zip_app.git

@@ -1,5 +1,6 @@
 {
 	"run_list": [ 
+		"recipe[zip_app]",
 		"recipe[osx-configuration]",
 		"recipe[dropbox]",
 		"recipe[postgresql]",
