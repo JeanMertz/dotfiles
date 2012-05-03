@@ -44,5 +44,6 @@
 		"recipe[google-chrome]",
 		"recipe[transmission]",
 		"recipe[alfred]",
+		"recipe[github]",
 	]
 }
