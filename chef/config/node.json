@@ -21,6 +21,8 @@
 		"recipe[z]",
 		"recipe[tmux]",
 		"recipe[term]",
+		"recipe[curl]",
+		"recipe[wget]",
 		"recipe[rubygems]",
 		"recipe[sublime-text]"
 	]
