@@ -28,5 +28,6 @@
 		"recipe[ruby-build]",
 		"recipe[rubygems]",
 		"recipe[sublime-text]"
+		"recipe[python]",
 	]
 }
