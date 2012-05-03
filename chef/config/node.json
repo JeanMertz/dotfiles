@@ -31,5 +31,6 @@
 		"recipe[python]",
 		"recipe[node]",
 		"recipe[pow]",
+		"recipe[ack]",
 	]
 }
