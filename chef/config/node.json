@@ -36,5 +36,6 @@
 		"recipe[bcrypt]",
 		"recipe[dnsmasq]",
 		"recipe[libxml2]",
+		"recipe[pg_top]",
 	]
 }
