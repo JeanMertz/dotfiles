@@ -159,7 +159,9 @@ log "$DOTFILES_DIR symlink created, continuing..."
 
 
 # Symlink dotfiles in homedir
-source "${DOTFILES_DIR}/utilities/symlink-dotfiles.sh"
+cd  "${DOTFILES_DIR}/symlinks"
+source "${DOTFILES_DIR}/utilities/symlink_dotfiles.sh"
+log "All files in ${DOTFILES_DIR}/symlinks have been symlinked to ${HOME}"
 
 
 # Run chef-solo
