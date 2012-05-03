@@ -153,21 +153,21 @@ commands = [
 		'description' =>	'Automatically open a new Finder window when a volume is mounted (1/3)',
 		'key' => 			'com.apple.frameworks.diskimages auto-open-ro-root',
 		'type' => 			'bool',
-		'value' => 			'true'
+		'value' => 			'false'
 	},
 	{
 		'name' => 			'open_finder_on_mount_2',
 		'description' =>	'Automatically open a new Finder window when a volume is mounted (2/3)',
 		'key' => 			'com.apple.frameworks.diskimages auto-open-rw-root',
 		'type' => 			'bool',
-		'value' => 			'true'
+		'value' => 			'false'
 	},
 	{
 		'name' => 			'open_finder_on_mount_3',
 		'description' =>	'Automatically open a new Finder window when a volume is mounted (3/3)',
 		'key' => 			'com.apple.finder OpenWindowForNewRemovableDisk',
 		'type' => 			'bool',
-		'value' => 			'true'
+		'value' => 			'false'
 	},
 	{
 		'name' => 			'finder_title_full_path',
@@ -310,10 +310,16 @@ commands = [
 commands.each do |config|
 	bash "osx_configuration_#{config['name']}" do
 		if config['command']
-			code "#{config['command']}"
+			code config['command']
 		else
 			code "defaults write #{config['key']} -#{config['type']} #{config['value']}"
-			not_if { %x[defaults read #{config['key']}] == config['value'] }
+
+			not_if do
+				value = %x[defaults read #{config['key']}].to_s.strip
+				( config['value'] == 'true' && value == '1' ) ||
+				( config['value'] == 'false' && value == '0' ) ||
+				( config['value'] == value )
+			end
 		end
 	end
 end
