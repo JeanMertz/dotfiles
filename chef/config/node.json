@@ -34,5 +34,6 @@
 		"recipe[ack]",
 		"recipe[ctags]",
 		"recipe[bcrypt]",
+		"recipe[dnsmasq]",
 	]
 }
