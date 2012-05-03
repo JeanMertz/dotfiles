@@ -40,5 +40,6 @@
 		"recipe[sqlite]",
 		"recipe[redis]",
 		"recipe[phantomjs]",
+		"recipe[qt]",
 	]
 }
