@@ -43,14 +43,14 @@ if [ ! -d "${HOME}/Dropbox" ]; then
 	check_for_dropbox
 
 	$DROPBOX_DIR="$(bash ${BOOTSTRAP_DIR}/utilities/get_dropbox_folder.sh)"
-	
+
 	log "Dropbox installed, continuing..."
 else
 	log "Dropbox found, continuing..."
 fi
 
 
-# Check if Xcode is installed
+# Check if Xcode/Git is installed
 log "Checking for Git"
 if [ ! $(which git 2>/dev/null) ]; then
 	error "Git not found"
@@ -70,29 +70,13 @@ if [ ! $(which brew 2>/dev/null) ]; then
 	sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
 	log "Homebrew installed, updating..."
 else
-	log "Homebrew found, updating..."
+	log "Homebrew found, checking..."
 fi
 
 
 # Make sure Homebrew works as expected
 brew update >/dev/null
 log $(brew doctor)
-
-
-# Install latest version of Git
-if [[ ! $(brew which git 2>/dev/null) ]]; then
-	log "Installing latest version of git..."
-	brew install git
-	log "Git installed, current version: $(git --version)"
-fi
-
-
-# Install latest version of Git-flow
-if [[ ! $(brew which git-flow 2>/dev/null) ]]; then
-	log "Installing latest version of git-flow..."
-	brew install git-flow
-	log "Git-flow installed"
-fi
 
 
 # Set git username and e-mail
