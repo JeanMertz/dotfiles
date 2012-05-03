@@ -135,6 +135,11 @@ else
 fi
 
 
+# Print current installed ruby versions
+log "Current installed Ruby versions:"
+log "$(rbenv versions)"
+
+
 # Install latest ruby-build
 ask "Do you want to install a new Ruby version? [yes/no]"
 read confirm_install
