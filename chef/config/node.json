@@ -39,5 +39,6 @@
 		"recipe[pg_top]",
 		"recipe[sqlite]",
 		"recipe[redis]",
+		"recipe[phantomjs]",
 	]
 }
