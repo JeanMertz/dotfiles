@@ -23,6 +23,7 @@
 		"recipe[term]",
 		"recipe[curl]",
 		"recipe[wget]",
+		"recipe[youtube-dl]",
 		"recipe[rubygems]",
 		"recipe[sublime-text]"
 	]
