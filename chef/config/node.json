@@ -32,5 +32,6 @@
 		"recipe[node]",
 		"recipe[pow]",
 		"recipe[ack]",
+		"recipe[ctags]",
 	]
 }
