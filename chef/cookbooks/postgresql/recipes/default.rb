@@ -1,5 +1,3 @@
-include_recipe 'homebrew'
-
 # install postgresql
 package 'postgresql'
 
@@ -10,9 +8,9 @@ execute 'initdb' do
 end
 
 # install postgres prefpane
-remote_directory '/Users/Jean/Library/PreferencePanes/Postgres.prefPane' do
-	source 'Postgres.prefPane'
+dmg_package 'Postgres' do
+	source 'postgres.dmg'
+	extension 'prefPane'
 end
-
 # install pg gem to work with postgresql
 gem_package 'pg'
