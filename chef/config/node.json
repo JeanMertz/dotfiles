@@ -27,7 +27,6 @@
 		"recipe[rbenv]",
 		"recipe[ruby-build]",
 		"recipe[rubygems]",
-		"recipe[sublime-text]"
 		"recipe[python]",
 		"recipe[node]",
 		"recipe[pow]",
@@ -43,6 +42,7 @@
 		"recipe[qt]",
 		"recipe[google-chrome]",
 		"recipe[transmission]",
+		"recipe[sublime-text]",
 		"recipe[alfred]",
 		"recipe[github]",
 		"recipe[totalfinder]",
