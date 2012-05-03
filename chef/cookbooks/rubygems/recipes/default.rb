@@ -6,3 +6,6 @@ gem_package 'rake'
 
 # install thin
 gem_package 'thin'
+
+# install rbenv-rehash
+gem_package 'rbenv-rehash'
