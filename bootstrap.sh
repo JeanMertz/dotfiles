@@ -164,10 +164,9 @@ source "${DOTFILES_DIR}/utilities/symlink_dotfiles.sh"
 log "All files in ${DOTFILES_DIR}/symlinks have been symlinked to ${HOME}"
 
 
-# Run chef-solo
+# Run chef-solo command
 log "Starting chef-solo run..."
-cd "${DOTFILES_DIR}/chef"
-chef-solo -c config/solo.rb -j config/node.json
+chef-solo -c "${DOTFILES_DIR}/chef/config/solo.rb"
 
 
 # Set git username and e-mail
