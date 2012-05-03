@@ -24,6 +24,8 @@
 		"recipe[curl]",
 		"recipe[wget]",
 		"recipe[youtube-dl]",
+		"recipe[rbenv]",
+		"recipe[ruby-build]",
 		"recipe[rubygems]",
 		"recipe[sublime-text]"
 	]
