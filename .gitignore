@@ -1,3 +1,4 @@
 .DS_Store
+*.cache
 Application Support/Sublime Text 2/Settings/License.sublime_license
 chef/cookbooks/sublime-text/files/default/sublime.dmg
