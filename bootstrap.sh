@@ -75,8 +75,12 @@ fi
 
 
 # Make sure Homebrew works as expected
-brew update >/dev/null
-log $(brew doctor)
+brew_doctor=$(brew doctor)
+if [ "$?" -ne "0" ]; then
+	log $brew_doctor
+	pause "Homebrew returned an error. You can fix this problem now or deal with it later. Press [enter] to continue..."
+else
+	log $brew_doctor
 fi
 
 
