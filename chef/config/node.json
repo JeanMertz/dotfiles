@@ -42,5 +42,6 @@
 		"recipe[phantomjs]",
 		"recipe[qt]",
 		"recipe[google-chrome]",
+		"recipe[transmission]",
 	]
 }
