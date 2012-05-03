@@ -45,5 +45,6 @@
 		"recipe[transmission]",
 		"recipe[alfred]",
 		"recipe[github]",
+		"recipe[totalfinder]",
 	]
 }
