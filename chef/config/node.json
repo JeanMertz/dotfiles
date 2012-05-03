@@ -7,6 +7,10 @@
 		"recipe[osx-configuration]",
 		"recipe[dropbox]",
 		"recipe[postgresql]",
+		"recipe[git]",
+		"recipe[git-flow]",
+		"recipe[git-extras]",
+		"recipe[hub]",
 		"recipe[rubygems]",
 		"recipe[sublime-text]"
 	]
