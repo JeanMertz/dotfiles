@@ -35,5 +35,6 @@
 		"recipe[ctags]",
 		"recipe[bcrypt]",
 		"recipe[dnsmasq]",
+		"recipe[libxml2]",
 	]
 }
