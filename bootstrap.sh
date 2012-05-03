@@ -77,17 +77,6 @@ fi
 # Make sure Homebrew works as expected
 brew update >/dev/null
 log $(brew doctor)
-
-
-# Set git username and e-mail
-if [[ ! $(git config --global user.name 2>/dev/null) ]]; then
-	ask "Git Full name?"
-	read git_username
-	git config --global user.name $git_username
-
-	ask "Git email?"
-	read git_email
-	git config --global user.email $git_email
 fi
 
 
@@ -137,21 +126,6 @@ if [ ! $(which chef-solo 2>/dev/null) ]; then
 fi
 
 
-# Set up SHH for github access
-if [ ! -f "${HOME}/.ssh/id_rsa.pub" ]; then
-	log "Setting up SSH for Github access"
-	ask "Provide e-mail address for SSH"
-	read ssh_email
-
-	ssh-keygen -t rsa -C $ssh_email
-
-	log "This is your id_rsa.pub value:"
-	cat "${HOME}/.ssh/id_rsa.pub"
-
-	pause "Please add the above key to Github. Press [enter] to continue..."
-fi
-
-
 # Symlink dotfiles directory
 if [ ! -d "$DOTFILES_DIR" ]; then
 	log "Creating symlink from $DOTFILES_DIR to ${HOME}/Dropbox/dotfiles"
@@ -188,6 +162,31 @@ source "${DOTFILES_DIR}/utilities/symlink-dotfiles.sh"
 log "Starting chef-solo run..."
 cd "${DOTFILES_DIR}/chef"
 chef-solo -c config/solo.rb -j config/node.json
+
+
+# Set git username and e-mail
+if [ ! "$(git config --global user.name 2>/dev/null)" ]; then
+	ask "Git Full name?"
+	read git_username
+	git config --global user.name "$git_username"
+
+	ask "Git email?"
+	read git_email
+	git config --global user.email "$git_email"
+fi
+
+
+# Set up SHH for github access
+if [ ! -f "${HOME}/.ssh/id_rsa.pub" ]; then
+	log "Setting up SSH for Github access"
+
+	ssh-keygen -t rsa -C "$git_email"
+
+	log "This is your id_rsa.pub value:"
+	cat "${HOME}/.ssh/id_rsa.pub"
+
+	pause "Please add the above key to Github. Press [enter] to continue..."
+fi
 
 
 # Clean up temporary directory
