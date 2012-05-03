@@ -48,5 +48,6 @@
 		"recipe[totalfinder]",
 		"recipe[firefox]",
 		"recipe[hazel]",
+		"recipe[pastebot-sync]"
 	]
 }
