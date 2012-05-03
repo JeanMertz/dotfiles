@@ -43,5 +43,6 @@
 		"recipe[qt]",
 		"recipe[google-chrome]",
 		"recipe[transmission]",
+		"recipe[alfred]",
 	]
 }
