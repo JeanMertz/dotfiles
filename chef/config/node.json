@@ -47,5 +47,6 @@
 		"recipe[github]",
 		"recipe[totalfinder]",
 		"recipe[firefox]",
+		"recipe[hazel]",
 	]
 }
