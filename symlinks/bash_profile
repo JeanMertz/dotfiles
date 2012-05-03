@@ -1,0 +1,24 @@
+# Default PATH
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+
+
+# Homebrew settings
+PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+
+# Python settings
+PATH=/usr/local/share/python:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+. `brew --prefix`/share/python/virtualenvwrapper.sh
+
+
+# z (Homebrew)
+. `brew --prefix`/etc/profile.d/z.sh
+
+
+# Ruby settings
+eval "$(rbenv init -)"
+
+
+# Sublime Text 2
+export EDITOR="subl -w"
