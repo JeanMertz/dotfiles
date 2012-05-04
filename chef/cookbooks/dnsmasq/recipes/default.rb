@@ -1,18 +1,22 @@
-# Instlal dnsmasq
-package 'dnsmasq'
+# Set formula
+formula = 'dnsmasq'
 
-# Setup correct dnsmasq.conf settings
-bash 'dnsmasq_config' do
+# Install package
+package(formula)
+
+# Setup config
+bash "#{formula}_config" do
 	code %(echo "domain-needed\naddress=/*.test/127.0.0.1" > /usr/local/etc/dnsmasq.conf)
 	not_if { File.exist?('/usr/local/etc/dnsmasq.conf') }
 end
 
-# Make sure dnsmasq launches on startup
-ruby_block 'dnsmasq_startup' do
+# Launch on startup
+ruby_block "#{formula}_startup" do
+	formula_path = `brew info #{formula}`[node['homebrew_regex']]
+
 	block do
-		unless File.exist?('/Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist')
-			%x[sudo cp /usr/local/Cellar/dnsmasq/2.61/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons]
-			%x[sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist]
-		end
+		%x[sudo cp #{formula_path}/homebrew.mxcl.dnsmasq.plist /Library/LaunchAgents/]
+		%x[launchctl load -w /Library/LaunchAgents/homebrew.mxcl.dnsmasq.plist]
 	end
+	not_if { File.exist?("/Library/LaunchAgents/homebrew.mxcl.dnsmasq.plist") }
 end
