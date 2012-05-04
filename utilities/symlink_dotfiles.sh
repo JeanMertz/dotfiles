@@ -13,7 +13,7 @@ update () {
     else
         if [ -e "$base_file" ]; then
             # file exists, rename
-            new_name = "${base_file}-$(date +%s)"
+            new_name="${base_file}-$(date +%s)"
             mv "$base_file" "$new_name"
             log "$base_file already exists, renamed to $new_name"
         fi
