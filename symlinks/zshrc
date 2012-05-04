@@ -1,0 +1,36 @@
+# Variables
+brew_path=`brew --prefix`
+
+
+# Default PATH
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+
+
+# Homebrew settings
+PATH=/usr/local/bin:/usr/local/sbin:$PATH
+p="$brew_path/share/zsh/site-functions" && [[ -e $p ]] && . $p
+
+
+# Python settings
+PATH=/usr/local/share/python:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+p="$brew_path/share/python/virtualenvwrapper.sh" && [[ -e $p ]] && . $p
+
+
+# z (Homebrew)
+p="$brew_path/etc/profile.d/z.sh" && [[ -e $p ]] && . $p
+function precmd () {
+	z --add "$(pwd -P)"
+}
+
+
+# Ruby settings
+eval "$(rbenv init -)"
+
+
+# Sublime Text 2
+export EDITOR="subl -w"
+
+
+# Git settings
+eval "$(hub alias -s)"
