@@ -1,12 +1,16 @@
-# Install Redis
-package 'redis'
+# Set formula
+formula = 'redis'
 
-# Make sure Redis launches on startup
-ruby_block 'redis_startup' do
+# Install package
+package(formula)
+
+# Launch on startup
+ruby_block "#{formula}_startup" do
+	formula_path = `brew info #{formula}`[node['homebrew_regex']]
+
 	block do
-		unless File.exist?('~/Library/LaunchAgents/homebrew.mxcl.redis.plist')
-			%x[cp /usr/local/Cellar/redis/2.4.13/homebrew.mxcl.redis.plist ~/Library/LaunchAgents/]
-			%x[launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.redis.plist]
-		end
+		FileUtils.cp "#{formula_path}/homebrew.mxcl.redis.plist", "#{node['home_path']}/Library/LaunchAgents/"
+		%x[launchctl load -w #{node['home_path']}/Library/LaunchAgents/homebrew.mxcl.redis.plist]
 	end
+	not_if { File.exist?("#{node['home_path']}/Library/LaunchAgents/homebrew.mxcl.redis.plist") }
 end
