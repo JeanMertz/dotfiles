@@ -22,3 +22,8 @@ eval "$(rbenv init -)"
 
 # Sublime Text 2
 export EDITOR="subl -w"
+
+# Git settings
+eval "$(hub alias -s)"
+. /Users/Jean/.bash/git-completion.bash
+. /Users/Jean/.bash/hub.bash_completion.sh
