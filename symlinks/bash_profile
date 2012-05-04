@@ -1,3 +1,6 @@
+# Variables
+brew_path=`brew --prefix`
+
 # Default PATH
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
@@ -9,11 +12,10 @@ PATH=/usr/local/bin:/usr/local/sbin:$PATH
 # Python settings
 PATH=/usr/local/share/python:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
-. `brew --prefix`/share/python/virtualenvwrapper.sh
-
+p="$brew_path/share/python/virtualenvwrapper.sh"	&& [[ -f $p ]] && . $p
 
 # z (Homebrew)
-. `brew --prefix`/etc/profile.d/z.sh
+p="$brew_path/etc/profile.d/z.sh" 					&& [[ -f $p ]] && . $p
 
 
 # Ruby settings
@@ -25,5 +27,5 @@ export EDITOR="subl -w"
 
 # Git settings
 eval "$(hub alias -s)"
-. /Users/Jean/.bash/git-completion.bash
-. /Users/Jean/.bash/hub.bash_completion.sh
+p="$HOME/.bash/git-completion.bash" 				&& [[ -f $p ]] && . $p
+p="$HOME/.bash/hub.bash_completion.sh" 				&& [[ -f $p ]] && . $p
