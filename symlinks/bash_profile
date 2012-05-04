@@ -1,6 +1,7 @@
 # Variables
 brew_path=`brew --prefix`
 
+
 # Default PATH
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
@@ -14,6 +15,7 @@ PATH=/usr/local/share/python:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 p="$brew_path/share/python/virtualenvwrapper.sh"	&& [[ -f $p ]] && . $p
 
+
 # z (Homebrew)
 p="$brew_path/etc/profile.d/z.sh" 					&& [[ -f $p ]] && . $p
 
@@ -24,6 +26,7 @@ eval "$(rbenv init -)"
 
 # Sublime Text 2
 export EDITOR="subl -w"
+
 
 # Git settings
 eval "$(hub alias -s)"
