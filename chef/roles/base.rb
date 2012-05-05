@@ -6,7 +6,7 @@ name 'base'
 override_attributes(
 	home_path: ENV['HOME'],
 	homebrew_path: `brew --prefix`.strip!,
-	homebrew_regex: /^#{`brew --prefix`.strip!}\/Cellar(?:(?! \(\d+ files?, \d+[a-z]\)).)+/i,
+	homebrew_regex: /^#{`brew --prefix`.strip!}\/Cellar(?:(?! \(\d+ files?).)+/i,
 	dotfiles_path: dotfiles_path,
 	dropbox_path: dropbox_path,
 	application_support_path: application_support_path
