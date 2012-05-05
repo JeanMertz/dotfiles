@@ -46,9 +46,8 @@ end
 
 # Launch on startup
 ruby_block "#{formula} Startup" do
-	formula_path = `brew info #{formula}`[node['homebrew_regex']]
-
 	block do
+	  formula_path = `brew info #{formula}`[node['homebrew_regex']]
 		%x[sudo cp #{formula_path}/homebrew.mxcl.#{formula}.plist /Library/LaunchDaemons]
 		%x[launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.#{formula}.plist]
 	end
