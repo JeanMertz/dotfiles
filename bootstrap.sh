@@ -202,5 +202,15 @@ if [ ! -f "${HOME}/.ssh/id_rsa.pub" ]; then
 fi
 
 
+# Add zsh as login shell
+if [ -f "/usr/local/bin/zsh" ] && [ -z `grep ^/usr/local/bin/zsh$ /etc/shells` ]; then
+	echo /usr/local/bin/zsh | sudo tee -a /etc/shells
+fi
+
+# Set zsh as default shell
+if [ -f "/usr/local/bin/zsh" ] && [ -z `dscl . -read ${HOME} UserShell | grep /usr/local/bin/zsh$` ]; then
+	chsh -s /usr/local/bin/zsh
+fi
+
 # Clean up temporary directory
 rm -R $WORK_DIR
