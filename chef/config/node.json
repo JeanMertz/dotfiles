@@ -61,6 +61,7 @@
 		"recipe[firefox]",
 		"recipe[hazel]",
 		"recipe[pastebot-sync]",
-		"recipe[steam]"
+		"recipe[steam]",
+		"recipe[1password]"
 	]
 }
