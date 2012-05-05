@@ -17,6 +17,7 @@
 		"recipe[bash-rails-completion]",
 		"recipe[colordiff]",
 		"recipe[readline]",
+		"recipe[mercurial]",
 
 		"recipe[zsh]",
 		"recipe[zsh-lovers]",
