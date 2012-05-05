@@ -5,17 +5,22 @@ formula = 'python'
 package(formula)
 
 # Install pip (Package manager)
-execute "#{formula} pip" do
-	command "#{node['homebrew_path']}/share/python/easy_install pip"
-	command "#{node['homebrew_path']}/share/python/pip install --upgrade distribute"
-	creates "#{node['homebrew_path']}/share/python/pip"
+bash "#{formula} pip" do
+  code <<-EOH
+  #{node['homebrew_path']}/share/python/easy_install pip
+	#{node['homebrew_path']}/share/python/pip install --upgrade distribute
+  EOH
+	not_if { File.exist?("#{node['homebrew_path']}/share/python/pip") }
 end
 
 # Install virtualenv to also support Python 3
-execute "#{formula} virtualenv" do
-	command 'pip install virtualenv'
-	command 'pip install virtualenvwrapper'
-	creates "#{node['homebrew_path']}/share/python/virtualenv"
+execute 'pip install virtualenv' do
+  creates "#{node['homebrew_path']}/share/python/virtualenv"
+end
+
+# Install virtualenvwrapper for easy env management
+execute 'pip install virtualenvwrapper' do
+  creates "#{node['homebrew_path']}/share/python/virtualenvwrapper.sh"
 end
 
 # Add Python2 environment
