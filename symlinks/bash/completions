@@ -1,0 +1,4 @@
+p="$brew_path/etc/bash_completion" && [[ -e $p ]] && . $p
+complete -C ${HOME}/.bash/completion_scripts/rake_completion -o default rake
+complete -C ${HOME}/.bash/completion_scripts/project_completion -o default c
+complete -C ${HOME}/.bash/completion_scripts/capistrano_completion -o default cap

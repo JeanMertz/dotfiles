@@ -1,0 +1,28 @@
+export PS1="\w$ "
+export EDITOR="subl_wait"
+
+# Python
+p="${brew_path}/share/python/virtualenvwrapper.sh" && [[ -e $p ]] && . $p
+
+# z (Homebrew)
+p="${brew_path}/etc/profile.d/z.sh" && [[ -e $p ]] && . $p
+
+# Ruby
+eval "$(rbenv init -)"
+
+# Git(Hub)
+eval "$(hub alias -s)"
+
+# Unbreak broken, non-colored terminal
+export TERM='xterm-color'
+alias ls='ls -G'
+alias ll='ls -lG'
+export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export GREP_OPTIONS="--color"
+
+# Erase duplicates in history
+export HISTCONTROL=erasedups
+# Store 10k history entries
+export HISTSIZE=10000
+# Append to the history file when exiting instead of overwriting it
+shopt -s histappend
