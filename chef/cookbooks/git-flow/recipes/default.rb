@@ -1,1 +1,5 @@
-package 'git-flow'
+# Set formula
+formula = 'git-flow'
+
+# Install package
+package(formula)

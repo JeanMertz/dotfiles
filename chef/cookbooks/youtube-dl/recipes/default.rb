@@ -1,1 +1,5 @@
-package 'youtube-dl'
+# Set formula
+formula = 'youtube-dl'
+
+# Install package
+package(formula)

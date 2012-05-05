@@ -1,5 +1,8 @@
-# Install Google Chrome from the dmg package
-dmg_package 'Google Chrome' do
+# Set formula
+formula = 'Google Chrome'
+
+# Install package
+package(formula) do
 	dmg_name 'GoogleChrome'
 	source 'http://dl.google.com/chrome/mac/dev/GoogleChrome.dmg'
 end

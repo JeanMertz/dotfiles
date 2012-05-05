@@ -15,8 +15,8 @@ ruby_block "#{formula}_startup" do
 	formula_path = `brew info #{formula}`[node['homebrew_regex']]
 
 	block do
-		%x[sudo cp #{formula_path}/homebrew.mxcl.dnsmasq.plist /Library/LaunchAgents/]
-		%x[launchctl load -w /Library/LaunchAgents/homebrew.mxcl.dnsmasq.plist]
+		%x[sudo cp #{formula_path}/homebrew.mxcl.#{formula}.plist /Library/LaunchDaemons]
+		%x[launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.#{formula}.plist]
 	end
-	not_if { File.exist?("/Library/LaunchAgents/homebrew.mxcl.dnsmasq.plist") }
+	not_if { File.exist?("/Library/LaunchDaemons/homebrew.mxcl.#{formula}.plist") }
 end

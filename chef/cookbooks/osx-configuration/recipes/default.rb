@@ -308,7 +308,7 @@ commands = [
 ]
 
 commands.each do |config|
-	bash "osx_configuration_#{config['name']}" do
+	bash "conf_#{config['name']}" do
 		if config['command']
 			code config['command']
 		else

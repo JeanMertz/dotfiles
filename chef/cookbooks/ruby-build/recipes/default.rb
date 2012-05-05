@@ -1,1 +1,5 @@
-package 'ruby-build'
+# Set formula
+formula = 'ruby-build'
+
+# Install package
+package(formula)

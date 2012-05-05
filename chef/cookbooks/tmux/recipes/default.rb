@@ -1,1 +1,5 @@
-package 'tmux'
+# Set formula
+formula = 'tmux'
+
+# Install package
+package(formula)

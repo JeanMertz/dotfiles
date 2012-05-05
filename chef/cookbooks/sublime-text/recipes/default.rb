@@ -1,10 +1,13 @@
-# install Sublime Text 2
-dmg_package 'Sublime Text 2' do
-	source 'Sublime Text 2.dmg'
+# Set formula
+formula = 'Sublime Text 2'
+
+# Install package
+dmg_package(formula) do
+	source "#{formula}.dmg"
 end
 
-# install subl command line tool
-bash 'install subl command' do
+# install command line tool
+bash "sublime_cli" do
 	code 'ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl'
 	not_if { File.exists?('/usr/local/bin/subl') }
 end

@@ -1,8 +1,14 @@
-package 'libxml2' do
-	not_if { File.directory?("#{`brew --prefix`.strip!}/Cellar/libxml2") }
+# Set formula
+formula = 'libxml2'
+formula_path = `brew info #{formula}`[node['homebrew_regex']]
+
+# Install package
+package(formula) do
+	not_if { File.exist?(formula_path) }
 end
 
-bash 'unlink_libxml2' do
-	code 'brew unlink libxml2'
-	only_if { File.directory?("#{`brew --prefix`.strip!}/include/libxml2") }
+# Unlink package
+bash "#{formula}_unlink" do
+	code "brew unlink #{formula}"
+	only_if { File.exist?("#{node['homebrew_path']}/include/#{formula}") }
 end
