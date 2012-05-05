@@ -34,3 +34,6 @@ export EDITOR="subl -w"
 
 # Git settings
 eval "$(hub alias -s)"
+
+# Node.js
+export NODE_PATH=/usr/local/lib/node_modules
