@@ -162,6 +162,10 @@ log "$DOTFILES_DIR symlink created, continuing..."
 log "Starting chef-solo run..."
 chef-solo -c "${DOTFILES_DIR}/chef/config/solo.rb"
 
+if [ "$?" -ne "0" ]; then
+  exit
+fi
+
 # Symlink dotfiles in homedir
 cd  "${DOTFILES_DIR}/symlinks"
 source "${DOTFILES_DIR}/utilities/symlink_dotfiles.sh"
