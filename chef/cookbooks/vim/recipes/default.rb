@@ -1,5 +1,6 @@
 # Set formula
 formula = 'vim'
+formula_path = `brew info #{formula}`[node['homebrew_regex']]
 
 # Get homebrew/dupes
 execute 'brew tap homebrew/dupes' do
@@ -7,4 +8,6 @@ execute 'brew tap homebrew/dupes' do
 end
 
 # Install package
-package("homebrew/dupes/#{formula}")
+execute "brew install homebrew/dupes/#{formula}" do
+	not_if { File.exist?(formula_path) }
+end
