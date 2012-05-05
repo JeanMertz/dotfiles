@@ -18,6 +18,7 @@
 		"recipe[colordiff]",
 		"recipe[readline]",
 		"recipe[mercurial]",
+		"recipe[vim]",
 
 		"recipe[zsh]",
 		"recipe[zsh-lovers]",
