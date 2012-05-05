@@ -1,6 +1,6 @@
 # Set formula
 formula = 'libxml2'
-formula_path = `brew info #{formula}`[node['homebrew_regex']]
+formula_path = `brew info #{formula}`[node['homebrew_regex']] || ''
 
 # Install package
 package(formula) do
