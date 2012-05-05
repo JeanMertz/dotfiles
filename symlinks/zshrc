@@ -1,4 +1,4 @@
-brew_path=`brew --prefix`
+brew_path=/usr/local
 
 . ${HOME}/.zsh/aliases
 . ${HOME}/.zsh/completion
