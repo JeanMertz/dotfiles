@@ -65,7 +65,7 @@ fi
 log "Checking for Homebrew"
 if [ ! $(which brew 2>/dev/null) ]; then
 	/usr/bin/ruby -e "$(/usr/bin/curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
-	echo "export PATH=/usr/local/bin:$PATH" >> "${HOME}/.bash_profile"
+	echo "export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH" >> "${HOME}/.bash_profile"
 	source "${HOME}/.bash_profile"
 	sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
 	log "Homebrew installed, updating..."
