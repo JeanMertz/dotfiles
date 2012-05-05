@@ -208,7 +208,7 @@ if [ -f "/usr/local/bin/zsh" ] && [ -z `grep ^/usr/local/bin/zsh$ /etc/shells` ]
 fi
 
 # Set zsh as default shell
-if [ -f "/usr/local/bin/zsh" ] && [ -z `dscl . -read ${HOME} UserShell | grep /usr/local/bin/zsh$` ]; then
+if [ -f "/usr/local/bin/zsh" ] && [[ -z `dscl . -read ${HOME} UserShell | grep /usr/local/bin/zsh$` ]]; then
 	chsh -s /usr/local/bin/zsh
 fi
 
