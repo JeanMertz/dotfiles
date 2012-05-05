@@ -111,6 +111,11 @@ else
 	log "Ruby-build found, continuing..."
 fi
 
+# Make sure we use the rbenv ruby
+if [ $(which ruby) == "/usr/bin/ruby" ]; then
+	eval "$(rbenv init -)"
+	source "${HOME}/.bash_profile"
+fi
 
 # Print current installed ruby versions
 log "Current installed Ruby versions:"
