@@ -26,11 +26,11 @@ end
 # Add Python2 environment
 execute "#{formula} Install Python2" do
 	command ". '/usr/local/share/python/virtualenvwrapper.sh' && mkvirtualenv python"
-	not_if { %x[. '/usr/local/share/python/virtualenvwrapper.sh' && lsvirtualenv -b].strip!.match(/^python$/) }
+	not_if { %x[. '/usr/local/share/python/virtualenvwrapper.sh' && lsvirtualenv -b].match(/^python$/) }
 end
 
 # Add Python3 environment
 execute "#{formula} Install Python3" do
 	command ". '#{node['homebrew_path']}/share/python/virtualenvwrapper.sh' && mkvirtualenv python3"
-	not_if { %x[. '#{node['homebrew_path']}/share/python/virtualenvwrapper.sh' && lsvirtualenv -b].strip!.match(/^python3$/) }
+	not_if { %x[. '#{node['homebrew_path']}/share/python/virtualenvwrapper.sh' && lsvirtualenv -b].match(/^python3$/) }
 end
