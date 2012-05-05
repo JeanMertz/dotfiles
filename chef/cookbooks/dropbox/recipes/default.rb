@@ -1,5 +1,5 @@
 # Set formula
-formula = 'dropbox'
+formula = 'Dropbox'
 
 # Install package
 dmg_package(formula) do
