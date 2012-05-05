@@ -7,11 +7,12 @@ dmg_package(formula) do
 end
 
 # Setup config
-bash "#{formula}_config" do
-	code <<-EOH
+execute "#{formula} Config" do
+	command <<-EOH
 		open /Applications/Dropbox.app &
 		echo "Please set up Dropbox (login and sync) and rerun Chef. The rest of this script needs access to the Dropbox folder."
 		exit 1
 	EOH
-	only_if { %x[ps ax | grep "#{formula}" | grep -v "grep"].empty? || ! File.exist?("#{ENV['HOME']}/#{formula}") }
+	creates "#{ENV['HOME']}/#{formula}"
+	only_if { %x[ps ax | grep "#{formula}" | grep -v "grep"].empty? }
 end

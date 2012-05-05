@@ -5,13 +5,13 @@ formula = 'dnsmasq'
 package(formula)
 
 # Setup config
-bash "#{formula}_config" do
-	code %(echo "domain-needed\naddress=/*.test/127.0.0.1" > /usr/local/etc/dnsmasq.conf)
-	not_if { File.exist?('/usr/local/etc/dnsmasq.conf') }
+execute "#{formula} Config" do
+	command %(echo "domain-needed\naddress=/*.test/127.0.0.1" > /usr/local/etc/dnsmasq.conf)
+	creates '/usr/local/etc/dnsmasq.conf'
 end
 
 # Launch on startup
-ruby_block "#{formula}_startup" do
+ruby_block "#{formula} Startup" do
 	formula_path = `brew info #{formula}`[node['homebrew_regex']]
 
 	block do

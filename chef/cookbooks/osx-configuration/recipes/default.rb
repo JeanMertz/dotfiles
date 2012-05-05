@@ -308,11 +308,11 @@ commands = [
 ]
 
 commands.each do |config|
-	bash "conf_#{config['name']}" do
+	execute "conf_#{config['name']}" do
 		if config['command']
-			code config['command']
+			command config['command']
 		else
-			code "defaults write #{config['key']} -#{config['type']} #{config['value']}"
+			command "defaults write #{config['key']} -#{config['type']} #{config['value']}"
 
 			not_if do
 				value = %x[defaults read #{config['key']}].to_s.strip

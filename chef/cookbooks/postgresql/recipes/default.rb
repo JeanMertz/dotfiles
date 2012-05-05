@@ -5,7 +5,7 @@ formula = 'postgresql'
 package(formula)
 
 # initialize database
-execute "#{formula}_initdb" do
+execute "#{formula} initdb" do
 	command "initdb #{node['homebrew_path']}/var/#{formula}"
 	creates "#{node['homebrew_path']}/var/#{formula}"
 end

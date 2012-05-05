@@ -8,8 +8,9 @@ dmg_package(formula) do
 end
 
 # Create symlinks
-bash "#{formula}_symlinks" do
-	code %(mkdir -p "#{node['application_support_path']}/Hazel")
-	code %(ln -s "#{node['application_support_path']}/Hazel/license" "#{ENV['HOME']}/Library/Application Support/Hazel")
-	only_if { File.exists?("#{node['application_support_path']}/Hazel/license") && !File.exists?("#{ENV['HOME']}/Library/Application Support/Hazel") }
+execute "#{formula} Symlinks" do
+	command %(mkdir -p "#{node['application_support_path']}/Hazel")
+	command %(ln -s "#{node['application_support_path']}/Hazel/license" "#{ENV['HOME']}/Library/Application Support/Hazel")
+	creates "#{ENV['HOME']}/Library/Application Support/Hazel"
+	only_if { File.exists?("#{node['application_support_path']}/Hazel/license") }
 end

@@ -8,7 +8,7 @@ package(formula) do
 end
 
 # Unlink package
-bash "#{formula}_unlink" do
-	code "brew unlink #{formula}"
+execute "#{formula} Unlink" do
+	command "brew unlink #{formula}"
 	only_if { File.exist?("#{node['homebrew_path']}/include/#{formula}") }
 end
