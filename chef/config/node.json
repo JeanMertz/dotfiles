@@ -63,6 +63,7 @@
 		"recipe[pastebot-sync]",
 		"recipe[steam]",
 		"recipe[screens-connect]",
+		"recipe[vlc]",
 		"recipe[1password]"
 	]
 }
