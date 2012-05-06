@@ -1,4 +1,5 @@
 .DS_Store
+*.pyc
 *.cache
 chef/cookbooks/sublime-text/files/default/sublime.dmg
 
