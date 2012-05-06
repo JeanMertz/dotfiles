@@ -68,6 +68,7 @@
 		"recipe[git-tower]",
 		"recipe[perian]",
 		"recipe[flux]",
+		"recipe[text-expander]",
 		"recipe[1password]"
 	]
 }
