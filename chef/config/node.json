@@ -62,6 +62,7 @@
 		"recipe[hazel]",
 		"recipe[pastebot-sync]",
 		"recipe[steam]",
+		"recipe[screens-connect]",
 		"recipe[1password]"
 	]
 }

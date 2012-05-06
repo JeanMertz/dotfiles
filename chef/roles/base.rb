@@ -7,6 +7,8 @@ override_attributes(
 	home_path: ENV['HOME'],
 	homebrew_path: `brew --prefix`.strip!,
 	homebrew_regex: /^#{`brew --prefix`.strip!}\/Cellar(?:(?! \(\d+ files?).)+/i,
+	prefpanes_path: "#{ENV['HOME']}/Library/PreferencePanes",
+	root_prefpanes_path: "/Library/PreferencePanes",
 	dotfiles_path: dotfiles_path,
 	dropbox_path: dropbox_path,
 	application_support_path: application_support_path
