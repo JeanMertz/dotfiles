@@ -1,7 +1,6 @@
 .DS_Store
 *.pyc
 *.cache
-chef/cookbooks/sublime-text/files/default/sublime.dmg
 
 # Secret license files
 Application Support/Hazel/license
