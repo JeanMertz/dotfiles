@@ -64,6 +64,7 @@
 		"recipe[steam]",
 		"recipe[screens-connect]",
 		"recipe[vlc]",
+		"recipe[keyboard-maestro]",
 		"recipe[1password]"
 	]
 }
