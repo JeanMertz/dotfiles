@@ -70,6 +70,7 @@
 		"recipe[flux]",
 		"recipe[text-expander]",
 		"recipe[caffeine]",
+		"recipe[btt]",
 		"recipe[1password]"
 	]
 }
