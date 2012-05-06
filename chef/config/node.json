@@ -66,6 +66,7 @@
 		"recipe[vlc]",
 		"recipe[keyboard-maestro]",
 		"recipe[git-tower]",
+		"recipe[perian]",
 		"recipe[1password]"
 	]
 }
