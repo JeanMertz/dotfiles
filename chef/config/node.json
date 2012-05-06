@@ -67,6 +67,7 @@
 		"recipe[keyboard-maestro]",
 		"recipe[git-tower]",
 		"recipe[perian]",
+		"recipe[flux]",
 		"recipe[1password]"
 	]
 }
