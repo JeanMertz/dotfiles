@@ -69,6 +69,7 @@
 		"recipe[perian]",
 		"recipe[flux]",
 		"recipe[text-expander]",
+		"recipe[caffeine]",
 		"recipe[1password]"
 	]
 }
