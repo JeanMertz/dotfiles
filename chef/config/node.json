@@ -65,6 +65,7 @@
 		"recipe[screens-connect]",
 		"recipe[vlc]",
 		"recipe[keyboard-maestro]",
+		"recipe[git-tower]",
 		"recipe[1password]"
 	]
 }
