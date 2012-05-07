@@ -40,13 +40,3 @@ execute "#{formula} License" do
 	creates "#{node["home_path"]}/Library/Application Support/Sublime Text 2/Settings/License.sublime_license"
 	only_if { File.exists?("#{node["home_path"]}/Dropbox/dotfiles/Application Support/Sublime Text 2/Settings/License.sublime_license") }
 end
-
-# activate application (builds needed files)
-execute "#{formula} Activate" do
-	command <<-EOH
-		subl -b &
-		sleep 2
-		killall -KILL "Sublime Text 2"
-	EOH
-	creates "#{node["home_path"]}/Library/Application Support/Sublime Text 2/Settings/Session.sublime_session"
-end
