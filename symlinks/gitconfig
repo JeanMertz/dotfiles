@@ -1,6 +1,6 @@
 [user]
-    name = Jean Mertz
-    email = jean.mertz@nulvierdrie.nl
+	name = Jean Mertz
+	email = jean.mertz@nulvierdrie.nl
 [diff]
 [alias]
     st = status
@@ -44,3 +44,11 @@
     user = JeanMertz
 [merge]
     tool = vimdiff
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
+[mergetool]
+	keepBackup = true
