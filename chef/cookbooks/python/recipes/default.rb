@@ -14,12 +14,12 @@ bash "#{formula} pip" do
 end
 
 # Install virtualenv to also support Python 3
-execute 'pip install virtualenv' do
+execute 'sudo pip install virtualenv' do
   creates "#{node['homebrew_path']}/share/python/virtualenv"
 end
 
 # Install virtualenvwrapper for easy env management
-execute 'pip install virtualenvwrapper' do
+execute 'sudo pip install virtualenvwrapper' do
   creates "#{node['homebrew_path']}/share/python/virtualenvwrapper.sh"
 end
 
