@@ -71,6 +71,7 @@
 		"recipe[text-expander]",
 		"recipe[caffeine]",
 		"recipe[btt]",
+		"recipe[kaleidoscope]",
 		"recipe[1password]"
 	]
 }
