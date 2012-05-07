@@ -27,14 +27,14 @@ function ask_if_installed {
 
 function activate_trim_support {
 	if [ $confirm_trim == "yes" ]; then
-		log "Activating TRIM Support for OS X..."
-		log "Backing up file before enabling TRIM support..."
+		log "Enabling TRIM Support for OS X..."
+		log "  Backing up kernel file..."
 		sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage.original
 
-		log "Patching kernel to enable TRIM support..."
+		log "  Patching kernel..."
 		sudo perl -pi -e 's|(\x52\x6F\x74\x61\x74\x69\x6F\x6E\x61\x6C\x00{1,20})[^\x00]{9}(\x00{1,20}\x51)|$1\x00\x00\x00\x00\x00\x00\x00\x00\x00$2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
 
-		log "Clearing system kernel extension cache..."
+		log "  Clearing system kernel extension cache..."
 		sudo kextcache -system-prelinked-kernel
 		sudo kextcache -system-caches
 		log "TRIM Support enabled."
@@ -46,7 +46,7 @@ function activate_trim_support {
 		log "  sudo kextcache -system-caches"
 
 		log ""
-		log "If something goes horribly wrong, restore the backup:"
+		log "If something goes horribly wrong, restore the backed up kernel file:"
 		log "sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage.original /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage"
 
 		log ""
