@@ -202,6 +202,21 @@ if [ ! -f "${HOME}/.ssh/id_rsa.pub" ]; then
 fi
 
 
+# Enable TRIM Support
+log "Checking for TRIM Support..."
+if [ "$(system_profiler SPSerialATADataType | grep 'TRIM Support: No' 2>/dev/null)" ]; then
+	log "Trim support currently disabled."
+	ask "Do you want to enable TRIM support for OS X? [yes/no]"
+	read confirm_trim
+	activate_trim_support
+else
+	log "TRIM support already enabled, to disable perfom the following actions:"
+	log "  sudo perl -pi -e 's|(\x52\x6F\x74\x61\x74\x69\x6F\x6E\x61\x6C\x00).{9}(\x00\x51)|$1\x41\x50\x50\x4C\x45\x20\x53\x53\x44$2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage"
+	log "  sudo kextcache -system-prelinked-kernel"
+	log "  sudo kextcache -system-caches"
+fi
+
+
 # Add zsh as login shell
 if [ -f "/usr/local/bin/zsh" ] && [ -z `grep ^/usr/local/bin/zsh$ /etc/shells` ]; then
 	echo /usr/local/bin/zsh | sudo tee -a /etc/shells
@@ -211,6 +226,18 @@ fi
 if [ -f "/usr/local/bin/zsh" ] && [[ -z `dscl . -read ${HOME} UserShell | grep /usr/local/bin/zsh$` ]]; then
 	chsh -s /usr/local/bin/zsh
 fi
+
+if [[ $confirm_trim == "yes" ]]; then
+	log "You enabled TRIM support for OS X. To complete this you will need to reboot your Mac."
+	log "You can rerun bootstrap.sh after the reboot to see if TRIM is properly enabled."
+fi
+
+log ""
+log "SUCCES. You're Mac is now fully bootstrapped and ready to be used."
+log "If you make snapshots of your Mac, now would be a good time to create a new snapshot."
+log ""
+log "There are several more actions you will need to do manually, go to the following URL to see what is left to do:"
+log "https://github.com/JeanMertz/dotfiles/wiki/Post-installation-instructions"
 
 # Clean up temporary directory
 rm -R $WORK_DIR
