@@ -61,7 +61,6 @@ function activate_trim_support {
 function ask_for_installation {
 	if [ $confirm_install == "yes" ]; then
 		install_ruby
-		log $(ruby -v)
 
 		log "Updating Rubygems..."
 		gem update --system >/dev/null
@@ -81,6 +80,7 @@ function install_ruby {
 	read ruby_version
 	rbenv install $ruby_version
 
+	log $(ruby -v)
 	ask_if_installed "ruby"
 	rbenv global $ruby_version
 	rbenv rehash
