@@ -205,7 +205,13 @@ fi
 # Enable TRIM Support
 log "Checking for TRIM Support..."
 if [ "$(system_profiler SPSerialATADataType | grep 'TRIM Support: No' 2>/dev/null)" ]; then
+
 	log "Trim support currently disabled."
+	if [ -f /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage.original ]; then
+		error "Old backup file found"
+		log "  If you already activated TRIM support but haven't rebooted yet, then please do so now before running this command again."
+		log "  Type \"no\" to skip this step and reboot first, or type \"yes\" if you understand the above and still want to reinstall TRIM support."
+	fi
 	ask "Do you want to enable TRIM support for OS X? [yes/no]"
 	read confirm_trim
 	activate_trim_support
