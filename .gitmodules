@@ -3,7 +3,7 @@
 	url = git://github.com/JeanMertz/chef-homebrew.git
 [submodule "chef/cookbooks/zip_app"]
 	path = chef/cookbooks/zip_app
-	url = git://github.com/fnichol/chef-zip_app.git
+	url = git@github.com:JeanMertz/chef-zip_app.git
 [submodule "chef/cookbooks/dmg"]
 	path = chef/cookbooks/dmg
 	url = git@github.com:JeanMertz/dmg.git
