@@ -69,10 +69,8 @@
 		"recipe[perian]",
 		"recipe[flux]",
 		"recipe[text-expander]",
-		"recipe[caffeine]",
 		"recipe[btt]",
 		"recipe[kaleidoscope]",
-		"recipe[air-video]",
-		"recipe[1password]"
+		"recipe[air-video]"
 	]
 }
