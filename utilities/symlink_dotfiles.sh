@@ -7,7 +7,7 @@ update () {
     if [ -h "$base_file" ]; then
         if [[ $(readlink "$base_file" 2>/dev/null) == "$(pwd)/$file" ]]; then
             # file already symlinked
-            log "$(pwd)/$file already symlinked to $base_file, skipped"
+            echo "$(pwd)/$file already symlinked to $base_file, skipped"
             return
         fi
     else
@@ -15,12 +15,12 @@ update () {
             # file exists, rename
             new_name="${base_file}-$(date +%s)"
             mv "$base_file" "$new_name"
-            log "$base_file already exists, renamed to $new_name"
+            echo "$base_file already exists, renamed to $new_name"
         fi
 
         # symlink to correct file
         ln -s "$(pwd)/$file" "$base_file"
-        log "$(pwd)/$file symlinked to $base_file"
+        echo "$(pwd)/$file symlinked to $base_file"
         return
     fi
 
