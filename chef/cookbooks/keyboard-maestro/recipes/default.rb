@@ -7,6 +7,6 @@ zip_app_package(formula) do
 end
 
 # Start application
-execute "open /Applications/#{formula}.app &>/dev/null" do
+execute "open '/Applications/#{formula}.app' &>/dev/null" do
 	only_if { %x[ps ax | grep "#{formula}" | grep -v "grep"].empty? }
 end
