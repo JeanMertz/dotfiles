@@ -32,9 +32,11 @@ end
 # Setup config
 execute "#{formula} Config" do
 	command %(echo "
+bogus-priv
+strict-order
 domain-needed
 resolv-file=/usr/local/etc/resolv.dnsmasq.conf
-address=/*.test/127.0.0.1
+address=/test/127.0.0.1
 listen-address=127.0.0.1" > /usr/local/etc/dnsmasq.conf)
 	creates '/usr/local/etc/dnsmasq.conf'
 end
