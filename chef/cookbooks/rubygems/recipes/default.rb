@@ -9,3 +9,6 @@ gem_package 'thin'
 
 # install rbenv-rehash
 gem_package 'rbenv-rehash'
+
+# install powder
+gem_package 'powder'
