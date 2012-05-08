@@ -71,6 +71,7 @@
 		"recipe[text-expander]",
 		"recipe[btt]",
 		"recipe[kaleidoscope]",
+		"recipe[bartender]",
 		"recipe[air-video]"
 	]
 }
