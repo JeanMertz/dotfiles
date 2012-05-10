@@ -1,9 +1,10 @@
 brew_path=/usr/local
 
-. ${HOME}/.zsh/aliases
-. ${HOME}/.zsh/completion
-. ${HOME}/.zsh/paths
-. ${HOME}/.zsh/config
+. ${HOME}/.zsh/aliases.zsh
+. ${HOME}/.zsh/completion.zsh
+. ${HOME}/.zsh/paths.zsh
+. ${HOME}/.zsh/config.zsh
+. ${HOME}/.zsh/styling.zsh
 
 # Default PATH
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
