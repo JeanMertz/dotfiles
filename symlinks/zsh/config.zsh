@@ -1,16 +1,14 @@
-if [[ -n $SSH_CONNECTION ]]; then
-  export PS1='%m:%3~$(git_info_for_prompt)%# '
-else
-  export PS1='%3~$(git_info_for_prompt)%# '
-fi
-
 export EDITOR='subl_wait'
 export PATH="$HOME/bin:$HOME/.bin:/usr/local/homebrew/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 fpath=(~/.zsh/functions $fpath)
 
-autoload -U ~/.zsh/functions/*(:t)
+autoload -U ~/.zsh/functions/*
+
+# Load all of the config files in ~/.zsh/functions that end in .zsh
+# TIP: Add files you don't want in git to .gitignore
+for f (~/.zsh/functions/*.zsh) . $f
 
 function cdf() { cd *$1*/ } # stolen from @topfunky
 
