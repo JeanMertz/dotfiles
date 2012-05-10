@@ -17,7 +17,7 @@ dmg_package 'Postgres' do
 end
 
 # install gem
-gem_package 'pg'
+execute 'env ARCHFLAGS="-arch x86_64" gem install pg'
 
 # Launch on startup
 ruby_block "#{formula}_startup" do
