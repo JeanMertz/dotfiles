@@ -3,12 +3,12 @@ export PATH="$HOME/bin:$HOME/.bin:/usr/local/homebrew/bin:/usr/local/bin:/usr/lo
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 fpath=(~/.zsh/functions $fpath)
-
 autoload -U ~/.zsh/functions/*
 
 # Load all of the config files in ~/.zsh/functions that end in .zsh
 # TIP: Add files you don't want in git to .gitignore
 for f (~/.zsh/functions/*.zsh) . $f
+. /usr/local/share/zsh/site-functions/git-flow-completion.zsh
 
 function cdf() { cd *$1*/ } # stolen from @topfunky
 
