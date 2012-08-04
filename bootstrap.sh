@@ -4,7 +4,7 @@
 # Get given parameters and set correct values
 # $1 = location where dotfiles are stored (defaults to ~/dotfiles)
 if [ -z "$1" ]; then
-	dotfiles="${HOME}/dotfiles"
+	dotfiles="${HOME}/.dotfiles"
 else
 	dotfiles="$1"
 fi
