@@ -3,7 +3,7 @@ formula = 'Bartender'
 
 # Install package
 zip_app_package(formula) do
-	source 'ttp://www.macbartender.com/Demo/Bartender.zip'
+	source 'http://www.macbartender.com/Demo/Bartender.zip'
 end
 
 # Start application
