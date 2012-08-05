@@ -17,16 +17,16 @@ function pause {
 function ask_if_installed {
 	ask "Did $1 install correctly? [yes/no]"
 	read installed
-	if [ $installed == "no" ]; then
+	if [ "$installed" == "no" ]; then
 		eval install_\$1
-	else if [ ! $installed == "yes" ]; then
+	else if [ ! "$installed" == "yes" ]; then
 		ask_if_installed $1
 	fi
 	fi
 }
 
 function activate_trim_support {
-	if [ $confirm_trim == "yes" ]; then
+	if [ "$confirm_trim" == "yes" ]; then
 		log "Enabling TRIM Support for OS X..."
 		log "  Backing up kernel file..."
 		sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage.original
@@ -59,7 +59,7 @@ function activate_trim_support {
 }
 
 function ask_for_installation {
-	if [ $confirm_install == "yes" ]; then
+	if [ "$confirm_install" == "yes" ]; then
 		install_ruby
 
 		log "Updating Rubygems..."
@@ -68,7 +68,7 @@ function ask_for_installation {
 
 		gem install rbenv-rehash --no-ri --no-rdoc >/dev/null || exit 1
 
-	else if [ ! $confirm_install == "no" ]; then
+	else if [ ! "$confirm_install" == "no" ]; then
 		ask_for_installation
 	fi
 	fi
