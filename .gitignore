@@ -1,7 +1,4 @@
 .DS_Store
 *.pyc
 *.cache
-
-# Secret license files
-Application Support/Hazel/license
-Application Support/Sublime Text 2/Settings/License.sublime_license
+Application Support/
