@@ -11,11 +11,10 @@ fi
 
 
 # Set base path variables
-WORK_DIR=/tmp/jean-imac-`date +%s`
+WORK_DIR="/tmp/jean-imac-`date +%s`"
 DOTFILES_DIR="$dotfiles"
-BOOTSTRAP_DIR=$( cd "$( dirname "$0" )" && pwd )
+BOOTSTRAP_DIR="$( cd "$( dirname "$0" )" && pwd )"
 DROPBOX_DIR="$(bash ${BOOTSTRAP_DIR}/utilities/get_dropbox_folder.sh)"
-
 
 # Source all functions used throughout this script
 source "${BOOTSTRAP_DIR}/utilities/bootstrap_functions.sh"
@@ -26,9 +25,8 @@ echo -e "\033[1;32mInitializing Mac configuration...\033[0m"
 
 
 # Create a tmp dir for all downloads/etc to go
-mkdir -p $WORK_DIR
-cd $WORK_DIR
-
+mkdir -p "$WORK_DIR"
+cd "$WORK_DIR"
 
 # Check if Dropbox is installed
 log "Checking for Dropbox"
@@ -49,7 +47,6 @@ else
 	log "Dropbox found, continuing..."
 fi
 
-
 # Check if Xcode/Git is installed
 log "Checking for Git"
 if [ ! $(which git 2>/dev/null) ]; then
@@ -59,7 +56,6 @@ if [ ! $(which git 2>/dev/null) ]; then
 else
 	log "Git found, continuing..."
 fi
-
 
 # Install Homebrew and fix xcode locations
 log "Checking for Homebrew"
@@ -82,7 +78,6 @@ if [ "$?" -ne "0" ]; then
 else
 	log $brew_doctor
 fi
-
 
 # Install rbenv
 log "Checking for rbenv..."
@@ -121,8 +116,7 @@ fi
 log "Current installed Ruby versions:"
 log "$(rbenv versions)"
 
-
-# Install latest ruby-build
+# Install new Ruby version
 ask "Do you want to install a new Ruby version? [yes/no]"
 read confirm_install
 ask_for_installation
@@ -133,7 +127,6 @@ if [ ! $(which chef-solo 2>/dev/null) ]; then
 	log "Installing chef gem..."
 	gem install chef --no-ri --no-rdoc >/dev/null || exit 1
 fi
-
 
 # Symlink dotfiles directory
 if [ ! -d "$DOTFILES_DIR" ]; then
