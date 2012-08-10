@@ -17,7 +17,10 @@ zip_app_package 'Postgres' do
 end
 
 # install gem
-execute 'env ARCHFLAGS="-arch x86_64" gem install pg'
+execute 'install pg' do
+	command 'env ARCHFLAGS="-arch x86_64" gem install pg --no-ri --no-rdoc'
+	only_if { %x[gem which pg | grep 'pg'].empty? }
+end
 
 # Launch on startup
 ruby_block "#{formula}_startup" do
