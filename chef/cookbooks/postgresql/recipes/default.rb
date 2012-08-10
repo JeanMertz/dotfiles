@@ -1,5 +1,6 @@
 # Set formula
 formula = 'postgresql'
+prefpane_version = '0.0.3'
 
 # Install package
 package(formula)
@@ -10,10 +11,9 @@ execute "#{formula} initdb" do
 	creates "#{node['homebrew_path']}/var/postgres"
 end
 
-# install dependencies
-dmg_package 'Postgres' do
-	source 'postgres.dmg'
-	extension 'prefPane'
+zip_app_package 'Postgres' do
+  source "https://github.com/downloads/jwang/pgpane/Postgres.prefPane_v#{prefpane_version}.zip"
+  extension 'prefPane'
 end
 
 # install gem
