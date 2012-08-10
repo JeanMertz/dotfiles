@@ -18,6 +18,7 @@ DROPBOX_DIR="$(bash ${BOOTSTRAP_DIR}/utilities/get_dropbox_folder.sh)"
 
 # Source all functions used throughout this script
 source "${BOOTSTRAP_DIR}/utilities/bootstrap_functions.sh"
+source "${HOME}/.bash_profile"
 
 # Ask for the administrator password upfront
 sudo -v
