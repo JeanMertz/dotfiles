@@ -1,9 +1,11 @@
 # Set formula
 formula = 'hazel'
+version = '3.0.10'
 
 # Install package
 dmg_package(formula) do
-	source 'hazel.dmg'
+  source "https://s3.amazonaws.com/Noodlesoft/Hazel-#{version}.dmg"
+  volumes_dir 'Hazel'
 	extension 'prefPane'
 end
 
