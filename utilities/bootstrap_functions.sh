@@ -79,11 +79,10 @@ function install_ruby {
 	ask "Please type the version of ruby you want to install..."
 	read ruby_version
 	rbenv install $ruby_version
-
-	log $(ruby -v)
-	ask_if_installed "ruby"
-	rbenv global $ruby_version
+	source "${HOME}/.bash_profile"
 	rbenv rehash
+	rbenv global $ruby_version
+	log "Active Ruby version: $(ruby -v)"
 }
 
 function check_for_dropbox {
