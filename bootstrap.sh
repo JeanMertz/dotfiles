@@ -90,7 +90,7 @@ fi
 log "Checking for rbenv..."
 if [ ! $(which rbenv 2>/dev/null) ]; then
 	log "Rbenv not found, installing..."
-	brew install rbenv
+	brew install rbenv &>/dev/null
 
 	log "Adding rbenv path to .bash_profile"
 	echo 'if which rbenv >/dev/null; then eval "$(rbenv init -)"; fi' >> "${HOME}/.bash_profile"
@@ -106,7 +106,7 @@ fi
 log "Checking for ruby-build..."
 if [ ! $(which ruby-build 2>/dev/null) ]; then
 	log "Ruby-build not found, installing..."
-	brew install ruby-build
+	brew install ruby-build &>/dev/null
 
 	log "Ruby-build installed, continuing..."
 else
