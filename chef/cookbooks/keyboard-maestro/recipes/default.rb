@@ -1,9 +1,10 @@
 # Set formula
 formula = 'Keyboard Maestro'
+version = '532'
 
 # Install package
 zip_app_package(formula) do
-	source 'http://files.stairways.com/keyboardmaestro-521.zip'
+  source "http://files.stairways.com/keyboardmaestro-#{version}.zip"
 end
 
 # Start application

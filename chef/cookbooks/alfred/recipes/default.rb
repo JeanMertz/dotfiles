@@ -1,9 +1,10 @@
 # Set formula
 formula = 'alfred'
+version = '1.3_249'
 
 # Install package
 dmg_package(formula) do
-	source 'http://rwc.cachefly.net/alfred_1.2_220.dmg'
+	source "http://rwc.cachefly.net/alfred_#{version}.dmg"
 end
 
 # Start application

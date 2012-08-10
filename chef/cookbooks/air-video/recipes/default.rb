@@ -1,9 +1,10 @@
 # Set formula
 formula = 'Air Video Server'
+version = '2.4.6-beta3'
 
 # Install package
 dmg_package(formula) do
-	source 'https://s3.amazonaws.com/AirVideo/Air+Video+Server+2.4.5-beta7u1.dmg'
+  source "http://s3.amazonaws.com/AirVideo/Air+Video+Server+#{version}.dmg"
 end
 
 # Start application
