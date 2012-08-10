@@ -4,7 +4,6 @@
 		"recipe[dmg]",
 		"recipe[zip_app]",
 		"recipe[homebrew]",
-		"recipe[osx-configuration]",
 		"recipe[dropbox]",
 
 		"recipe[git]",
