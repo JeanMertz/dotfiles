@@ -34,8 +34,6 @@
 		"recipe[ruby-build]",
 		"recipe[rubygems]",
 
-		"recipe[python]",
-
 		"recipe[node]",
 		"recipe[pow]",
 
