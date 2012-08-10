@@ -70,6 +70,7 @@
 		"recipe[btt]",
 		"recipe[kaleidoscope]",
 		"recipe[bartender]",
-		"recipe[air-video]"
+		"recipe[air-video]",
+		"recipe[after_block]"
 	]
 }
