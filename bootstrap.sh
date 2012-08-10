@@ -113,12 +113,6 @@ else
 	log "Ruby-build found, continuing..."
 fi
 
-# Make sure we use the rbenv ruby
-if [ $(which ruby) == "/usr/bin/ruby" ]; then
-	eval "$(rbenv init -)"
-	source "${HOME}/.bash_profile"
-fi
-
 # Print current installed ruby versions
 log "Current installed Ruby versions:"
 log "$(rbenv versions)"
@@ -128,6 +122,10 @@ ask "Do you want to install a new Ruby version? [yes/no]"
 read confirm_install
 ask_for_installation
 
+# Warn on Ruby 1.8
+if [ "$(ruby -v | grep '1.8' 2>/dev/null)" ]; then
+	pause "Ruby 1.8 detected. If this is not the correct ruby version, please exit and type 'rbenv global <version>'. Press [enter] to continue..."
+fi
 
 # Install chef-solo for further system setup
 if [ ! $(which chef-solo 2>/dev/null) ]; then
