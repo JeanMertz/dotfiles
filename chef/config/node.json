@@ -47,10 +47,11 @@
 
 		"recipe[sqlite]",
 		"recipe[redis]",
+		"recipe[mongodb]",
 		"recipe[phantomjs]",
 		"recipe[qt]",
 		"recipe[google-chrome]",
-		
+
 		"recipe[transmission]",
 		"recipe[sublime-text]",
 		"recipe[alfred]",
