@@ -1,3 +1,10 @@
+# This is a local DNS server used to catch the *.test domain and reroute its
+# requests to localhost. This allows us to use app.test when doing integration
+# tests in RSpec and/or Cucumber. This is especially recommended when using
+# subdomain specific features that need testing.
+#
+# Also, OpenDNS is used as the default DNS when accessing the www.
+
 # Set formula
 formula = 'dnsmasq'
 
