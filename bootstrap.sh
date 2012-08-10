@@ -178,7 +178,7 @@ fi
 # Install yadr
 brew install ack ctags git hub macvim fasd
 gem install ruby-debug-ide
-git clone https://github.com/JeanMertz/zsh-to-prezto ~/.yadr
+git clone https://github.com/JeanMertz/omz-to-prezto ~/.yadr
 cd ~/.yadr && rake install
 
 
