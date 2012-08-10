@@ -93,7 +93,7 @@ if [ ! $(which rbenv 2>/dev/null) ]; then
 	brew install rbenv
 
 	log "Adding rbenv path to .bash_profile"
-	echo 'eval "$(rbenv init -)"' >> "${HOME}/.bash_profile"
+	echo 'if which rbenv >/dev/null; then eval "$(rbenv init -)"; fi' >> "${HOME}/.bash_profile"
 	source "${HOME}/.bash_profile"
 
 	log "Rbenv installed, continuing..."
