@@ -131,6 +131,7 @@ fi
 if [ ! $(which chef-solo 2>/dev/null) ]; then
 	log "Installing chef gem..."
 	gem install chef --no-ri --no-rdoc >/dev/null || exit 1
+	rbenv rehash
 fi
 
 # Symlink dotfiles directory
