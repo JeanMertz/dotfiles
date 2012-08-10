@@ -4,8 +4,8 @@ gem_package 'bundler'
 # install rake
 gem_package 'rake'
 
-# install thin
-gem_package 'thin'
+# install unicorn
+gem_package 'unicorn'
 
 # install rbenv-rehash
 gem_package 'rbenv-rehash'
