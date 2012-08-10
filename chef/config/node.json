@@ -1,5 +1,5 @@
 {
-	"run_list": [ 
+	"run_list": [
 		"role[base]",
 		"recipe[dmg]",
 		"recipe[zip_app]",
@@ -11,21 +11,11 @@
 		"recipe[git-extras]",
 		"recipe[hub]",
 
-		"recipe[bash]",
-		"recipe[bash-completion]",
-		"recipe[bash-rails-completion]",
 		"recipe[colordiff]",
 		"recipe[readline]",
 		"recipe[mercurial]",
-		"recipe[vim]",
 
-		"recipe[zsh]",
-		"recipe[zsh-lovers]",
-		"recipe[z]",
 
-		"recipe[tmux]",
-		"recipe[term]",
-		"recipe[curl]",
 		"recipe[wget]",
 		"recipe[youtube-dl]",
 

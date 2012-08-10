@@ -170,10 +170,16 @@ if [ "$?" -ne "0" ]; then
   exit
 fi
 
-# Symlink dotfiles in homedir
-cd  "${DOTFILES_DIR}/symlinks"
-source "${DOTFILES_DIR}/utilities/symlink_dotfiles.sh"
-log "All files in ${DOTFILES_DIR}/symlinks have been symlinked to ${HOME}"
+# # Symlink dotfiles in homedir
+# cd  "${DOTFILES_DIR}/symlinks"
+# source "${DOTFILES_DIR}/utilities/symlink_dotfiles.sh"
+# log "All files in ${DOTFILES_DIR}/symlinks have been symlinked to ${HOME}"
+
+# Install yadr
+brew install ack ctags git hub macvim fasd
+gem install ruby-debug-ide
+git clone https://github.com/JeanMertz/zsh-to-prezto ~/.yadr
+cd ~/.yadr && rake install
 
 
 # Set git username and e-mail
