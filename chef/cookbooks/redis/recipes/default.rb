@@ -13,3 +13,14 @@ ruby_block "#{formula}_startup" do
 	end
 	not_if { File.exist?("#{node['home_path']}/Library/LaunchAgents/homebrew.mxcl.#{formula}.plist") }
 end
+
+# Daemonize Redis
+execute "sed -i -e 's/daemonize no/daemonize yes/' /usr/local/etc/redis.conf" do
+  not_if { %x[cat /usr/local/etc/redis.conf].include?('daemonize yes') }
+end
+
+# Install prefPane
+zip_app_package 'Redis' do
+  source 'https://github.com/dquimper/Redis.prefPane/raw/master/Redis.prefPane.zip'
+  extension 'prefPane'
+end
