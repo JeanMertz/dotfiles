@@ -37,6 +37,9 @@
 		"recipe[sqlite]",
 		"recipe[redis]",
 		"recipe[mongodb]",
+
+		"recipe[prefpane-hosts]",
+
 		"recipe[phantomjs]",
 		"recipe[qt]",
 		"recipe[google-chrome]",
