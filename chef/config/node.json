@@ -38,6 +38,7 @@
 		"recipe[redis]",
 		"recipe[mongodb]",
 
+		"recipe[tuxera-NTFS]",
 		"recipe[prefpane-hosts]",
 		"recipe[prefpane-magic-launch]",
 		"recipe[prefpane-rcdefaultapp]",
