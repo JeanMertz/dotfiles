@@ -39,6 +39,7 @@
 		"recipe[mongodb]",
 
 		"recipe[tuxera-NTFS]",
+		"recipe[backblaze]",
 		"recipe[prefpane-hosts]",
 		"recipe[prefpane-magic-launch]",
 		"recipe[prefpane-rcdefaultapp]",
