@@ -27,7 +27,8 @@ ruby_block "#{formula}_startup" do
 	block do
 	  formula_path = `brew info #{formula}`[node['homebrew_regex']]
 		%x[cp #{formula_path}/homebrew.mxcl.#{formula}.plist #{node['home_path']}/Library/LaunchAgents]
-		%x[launchctl load -w #{node['home_path']}/Library/LaunchAgents/homebrew.mxcl.#{formula}.plist]
+		# Don't load the LaunchAgent here, let Postgres.prefPane do this.
+		# %x[launchctl load -w #{node['home_path']}/Library/LaunchAgents/homebrew.mxcl.#{formula}.plist]
 	end
 	not_if { File.exist?("#{node['home_path']}/Library/LaunchAgents/homebrew.mxcl.#{formula}.plist") }
 end
