@@ -75,7 +75,7 @@ function ask_for_installation {
 }
 
 function install_ruby {
-	rbenv install
+	rbenv install -l
 	ask "Please type the version of ruby you want to install..."
 	read ruby_version
 	rbenv install $ruby_version
