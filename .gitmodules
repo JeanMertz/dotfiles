@@ -6,4 +6,4 @@
 	url = git@github.com:JeanMertz/dmg.git
 [submodule "chef/cookbooks/homebrew"]
 	path = chef/cookbooks/homebrew
-	url = git://github.com/opscode-cookbooks/homebrew.git
+	url = git://github.com/seryl/homebrew.git
