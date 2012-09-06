@@ -6,4 +6,5 @@ dmg_package(formula) do
   dmg_name 'install_backblaze-af0071cf582'
   execute true
 	source 'https://secure.backblaze.com/mac/install_backblaze.dmg'
+  installed_resource "#{node['root_prefpanes_path']}/BackblazeBackup.prefPane"
 end
