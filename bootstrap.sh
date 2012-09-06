@@ -247,12 +247,7 @@ fi
 # log "Loading sensible defaults (see ~/dotfiles/.osx)"
 # source "${BOOTSTRAP_DIR}/.osx"
 
-log ""
-log "SUCCES. You're Mac is now fully bootstrapped and ready to be used."
-log "If you make snapshots of your Mac, now would be a good time to create a new snapshot."
-log ""
-log "There are several more actions you will need to do manually, go to the following URL to see what is left to do:"
-log "https://github.com/JeanMertz/dotfiles/wiki/Post-installation-instructions"
-
 # Clean up temporary directory
 rm -R $WORK_DIR
+
+open "https://github.com/JeanMertz/dotfiles/wiki/Congratulations"
