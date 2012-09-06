@@ -1,5 +1,5 @@
 # Install TotalFinder from the dmg package
-version = '1.3.4'
+version = '1.4'
 
 dmg_package 'TotalFinder' do
   source "http://downloads-1.binaryage.com/TotalFinder-#{version}.dmg"

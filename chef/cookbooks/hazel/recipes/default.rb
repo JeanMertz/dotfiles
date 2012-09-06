@@ -1,6 +1,6 @@
 # Set formula
 formula = 'hazel'
-version = '3.0.10'
+version = '3.0.12'
 
 # Install package
 dmg_package(formula) do

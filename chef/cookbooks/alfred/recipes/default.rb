@@ -1,6 +1,6 @@
 # Set formula
 formula = 'alfred'
-version = '1.3_249'
+version = '1.3.1_261'
 
 # Install package
 dmg_package(formula) do

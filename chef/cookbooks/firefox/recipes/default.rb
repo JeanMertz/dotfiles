@@ -1,6 +1,6 @@
 # Set formula
 formula = 'firefox'
-version = '15.0b3'
+version = '15.0'
 
 # Install package
 dmg_package(formula) do
