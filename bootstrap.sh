@@ -244,8 +244,8 @@ if [[ $confirm_trim == "yes" ]]; then
 	log "You can rerun bootstrap.sh after the reboot to see if TRIM is properly enabled."
 fi
 
-log "Loading sensible defaults (see ~/dotfiles/.osx)"
-source "${BOOTSTRAP_DIR}/.osx"
+# log "Loading sensible defaults (see ~/dotfiles/.osx)"
+# source "${BOOTSTRAP_DIR}/.osx"
 
 log ""
 log "SUCCES. You're Mac is now fully bootstrapped and ready to be used."
