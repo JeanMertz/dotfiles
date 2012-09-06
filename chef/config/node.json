@@ -6,6 +6,8 @@
 		"recipe[homebrew]",
 		"recipe[dropbox]",
 
+		"recipe[zsh]",
+		"recipe[zsh-lovers]",
 		"recipe[git]",
 		"recipe[git-flow]",
 		"recipe[git-extras]",
