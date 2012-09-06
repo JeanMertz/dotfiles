@@ -20,6 +20,7 @@
 		"recipe[youtube-dl]",
 
 		"recipe[rbenv]",
+		"recipe[rbenv-gemset]",
 		"recipe[ruby-build]",
 		"recipe[rubygems]",
 
