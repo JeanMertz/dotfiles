@@ -176,11 +176,12 @@ fi
 # log "All files in ${DOTFILES_DIR}/symlinks have been symlinked to ${HOME}"
 
 # Install yadr
-brew install ack ctags git hub macvim fasd
-gem install ruby-debug-ide
-git clone https://github.com/JeanMertz/omz-to-prezto ~/.yadr
-cd ~/.yadr && rake install
-
+if [ ! -d "${HOME}/.yadr" ]; then
+  brew install ack ctags git hub macvim fasd
+  gem install ruby-debug-ide
+  git clone https://github.com/JeanMertz/omz-to-prezto ~/.yadr
+  cd ~/.yadr && rake install
+fi
 
 # Set git username and e-mail
 if [ ! "$(git config --global user.name 2>/dev/null)" ]; then
