@@ -1,0 +1,91 @@
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
+# Some parts kindly taken from Homebrew installer
+
+DOTFILES_PREFIX = '~/dotfiles'
+HOME = File.expand_path('~')
+
+module Tty extend self
+  def blue; bold 34; end
+  def white; bold 39; end
+  def red; underline 31; end
+  def reset; escape 0; end
+  def bold n; escape "1;#{n}" end
+  def underline n; escape "4;#{n}" end
+  def escape n; "\033[#{n}m" if STDOUT.tty? end
+end
+
+class Array
+  def shell_s
+    cp = dup
+    first = cp.shift
+    cp.map{ |arg| arg.gsub " ", "\\ " }.unshift(first) * " "
+  end
+end
+
+def ohai *args
+  puts "#{Tty.blue}==>#{Tty.white} #{args.shell_s}#{Tty.reset}"
+end
+
+def warn warning
+  puts "#{Tty.red}Warning#{Tty.reset}: #{warning.chomp}"
+end
+ 
+def system *args
+  abort "Failed during: #{args.shell_s}" unless Kernel.system *args
+end
+
+def sudo *args
+  args = if args.length > 1
+    args.unshift "/usr/bin/sudo"
+  else
+    "/usr/bin/sudo #{args.first}"
+  end
+  ohai *args
+  system *args
+end
+
+def getc  # NOTE only tested on OS X
+  system "/bin/stty raw -echo"
+  if RUBY_VERSION >= '1.8.7'
+    STDIN.getbyte
+  else
+    STDIN.getc
+  end
+ensure
+  system "/bin/stty -raw echo"
+end
+
+def wait_for_user
+  puts
+  puts "Press ENTER to continue or any other key to abort"
+  c = getc
+  # we test for \r and \n because some stuff does \r instead
+  abort unless c == 13 or c == 10
+end
+
+
+##########################################
+
+
+ohai 'This script will install:'
+%w[dotfiles/ .zshrc .zlogin .vimrc .gemrc].each do |file|
+  puts "#{HOME}/#{file}"
+end
+
+ohai 'Installing Homebrew...'
+system 'ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"'
+ohai 'Homebrew successfully installed.'
+
+ohai 'Installing Puppet...'
+system 'brew install puppet'
+ohai 'Puppet successfully installed.'
+
+ohai 'Cloning Dotfiles repository...'
+system 'git clone https://github.com/jeanmertz/dotfiles #{HOME}/dotfiles'
+ohai 'Checking out "next" branch...'
+system 'cd #{HOME}/dotfiles'
+system 'git checkout next'
+
+ohai 'Launching Puppet installation script...'
+system 'cd #{HOME}/dotfiles/ && sudo puppet apply osx.pp'
+ohai 'Puppet completed successfully, your system is now fully bootstrapped'
