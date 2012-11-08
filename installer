@@ -29,38 +29,9 @@ end
 def warn warning
   puts "#{Tty.red}Warning#{Tty.reset}: #{warning.chomp}"
 end
- 
+
 def system *args
   abort "Failed during: #{args.shell_s}" unless Kernel.system *args
-end
-
-def sudo *args
-  args = if args.length > 1
-    args.unshift "/usr/bin/sudo"
-  else
-    "/usr/bin/sudo #{args.first}"
-  end
-  ohai *args
-  system *args
-end
-
-def getc  # NOTE only tested on OS X
-  system "/bin/stty raw -echo"
-  if RUBY_VERSION >= '1.8.7'
-    STDIN.getbyte
-  else
-    STDIN.getc
-  end
-ensure
-  system "/bin/stty -raw echo"
-end
-
-def wait_for_user
-  puts
-  puts "Press ENTER to continue or any other key to abort"
-  c = getc
-  # we test for \r and \n because some stuff does \r instead
-  abort unless c == 13 or c == 10
 end
 
 
