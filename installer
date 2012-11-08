@@ -11,7 +11,7 @@ OptionParser.new do |opts|
   opts.banner = "Usage: installer [options]"
   opts.on("-d", "--development", "Run in development mode") { |o| @options[:development] = o }
   opts.on("-v", "--verbose", "Run verbosely") { |o| @options[:verbose] = o }
-  opts.on("-t", "--test-puppet", "Show output of Puppet but don't make any changes") { |o| @options[:noop] = o }
+  opts.on("-p s", "--puppet-options=s", "Pass along specific options to Puppet (ex: -p 'noop debug')") { |o| @options[:puppet] = o }
 end.parse!
 
 module Tty extend self
@@ -142,9 +142,9 @@ else
 end
 
 ohai 'Launching Puppet installation script...'
-opts = ''
+opts =  ''
 opts += ' --verbose' if @options[:verbose]
-opts += ' --noop' if @options[:noop]
+opts += @options[:puppet].split(' ').map!{ |v| " --#{v}" }.join('') if @options[:puppet]
 
 system "cd #{$home}/dotfiles/ && sudo #{$home}/.rbenv/shims/puppet apply puppet.pp --group 0 --modulepath=./modules #{opts}", :verbose => true
 
