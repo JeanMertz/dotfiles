@@ -65,6 +65,9 @@ Puppet::Type.type(:package).provide(:brew, :parent => Puppet::Provider::Package)
     end
 
     begin
+      # command = brew_list_command.flatten.map(&:to_s).join(' ')
+      # list = `#{command}`.lines.map {|line| name_version_split(line) }
+
       list = execute(brew_list_command).lines.map {|line| name_version_split(line) }
     rescue Puppet::ExecutionFailure => detail
       raise Puppet::Error, "Could not list packages: #{detail}"
