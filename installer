@@ -141,4 +141,9 @@ opts += ' --verbose' if options[:verbose]
 opts += ' --noop' if options[:noop]
 
 system "cd #{$home}/dotfiles/ && sudo puppet apply puppet.pp --modulepath=./modules #{opts}", :verbose => true
+
 ohai 'Puppet completed successfully, your system is now fully bootstrapped'
+
+warn 'Some Homebrew installations might have post-installation instructions.'
+warn 'To see those instructions, run "brew info <formula>" for the following formulas:'
+system 'brew list', :verbose => true
