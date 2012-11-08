@@ -10,6 +10,7 @@ $home = File.expand_path('~')
 OptionParser.new do |opts|
   opts.banner = "Usage: installer [options]"
   opts.on("-d", "--development", "Run in development mode") { |o| @options[:development] = o }
+  opts.on("-v", "--verbose", "Run verbosely") { |o| @options[:verbose] = o }
 end.parse!
 
 module Tty extend self
@@ -46,8 +47,9 @@ def warn warning
   puts "#{Tty.red}Warning#{Tty.reset}: #{warning.chomp}"
 end
 
-def system *args
-  abort "Failed during: #{args.shell_s}" unless Kernel.system *args
+def system command, opts = {}
+  command += ' &>/dev/null' unless @options[:verbose] || opts[:verbose]
+  abort "Failed during: #{command}" unless Kernel.system(command)
 end
 
 
@@ -61,7 +63,7 @@ end
 
 if Dir["/usr/local/.git/*"].empty?
   ohai 'Installing Homebrew...'
-  system 'ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"'
+  system 'ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"', :verbose => true
   ohai 'Verifying Homebrew installation...'
   system 'brew doctor'
 end
@@ -69,8 +71,8 @@ end
 
 unless File.exists? '/usr/local/bin/rbenv'
   ohai 'Installing rbenv...'
-  system 'brew install rbenv &>/dev/null'
-  system 'brew install rbenv-gemset &>/dev/null'
+  system 'brew install rbenv'
+  system 'brew install rbenv-gemset'
 
   File.open("#{$home}/.bash_profile", 'a+') do |file|
     line = 'if which rbenv >/dev/null; then eval "$(rbenv init -)"; fi'
@@ -80,13 +82,13 @@ end
 
 unless File.exists? '/usr/local/bin/ruby-build'
   ohai 'Installing ruby-build...'
-  system 'brew install ruby-build &>/dev/null'
+  system 'brew install ruby-build'
 end
 
 unless File.exists? "#{$home}/.rbenv/versions/#{$ruby_version}/"
   ohai "Installing Ruby #{$ruby_version} (hang tight, this will take a while)"
-  %x[rbenv install #{$ruby_version} &>/dev/null]
-  system "rbenv global #{$ruby_version} &>/dev/null"
+  system "rbenv install #{$ruby_version}"
+  system "rbenv global #{$ruby_version}"
   system 'eval "$(rbenv init -)"'
 end
 
@@ -97,12 +99,12 @@ unless File.exists? "#{$home}/.rbenv/versions/#{$ruby_version}/gemsets/global"
 end
 
 unless gem_installed? 'rbenv-rehash'
-  system "#{$home}/.rbenv/shims/gem install rbenv-rehash --no-ri --no-rdoc &>/dev/null"
+  system "#{$home}/.rbenv/shims/gem install rbenv-rehash --no-ri --no-rdoc"
 end
 
 unless gem_installed? 'puppet'
   ohai 'Installing Puppet...'
-  system "#{$home}/.rbenv/shims/gem install puppet -v 3.0.1 --no-ri --no-rdoc &>/dev/null"
+  system "#{$home}/.rbenv/shims/gem install puppet -v 3.0.1 --no-ri --no-rdoc"
 end
 
 if Dir["#{$home}/dotfiles/.git/*"].empty?
