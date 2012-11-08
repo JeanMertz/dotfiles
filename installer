@@ -109,6 +109,10 @@ end
 unless gem_installed? 'puppet'
   ohai 'Installing Puppet...'
   system "#{$home}/.rbenv/shims/gem install puppet -v 3.0.1 --no-ri --no-rdoc"
+
+  # Hack to prevent Puppet from disabling the HOME environment variable (breaks Homebrew)
+  # => http://grokbase.com/t/gg/puppet-users/12a35t566x/puppet-3-killed-my-environment-variables
+  %x[sed -i -e "s/'HOME', //" #{$home}/.rbenv/versions/#{$ruby_version}/gemsets/global/gems/puppet-3.0.1/lib/puppet/util/posix.rb]
 end
 
 if Dir["#{$home}/dotfiles/.git/*"].empty?
