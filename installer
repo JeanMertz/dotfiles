@@ -2,8 +2,8 @@
 # Some parts kindly taken from Homebrew installer
 require 'rubygems'
 
-DOTFILES_PREFIX = '~/dotfiles'
-HOME = File.expand_path('~')
+$ruby_version = '1.9.3-p194'
+$home = File.expand_path('~')
 
 module Tty extend self
   def blue; bold 34; end
@@ -49,7 +49,7 @@ end
 
 ohai 'This script will install:'
 %w[dotfiles/ .zshrc .zlogin .vimrc .gemrc].each do |file|
-  puts "#{HOME}/#{file}"
+  puts "#{$home}/#{file}"
 end
 
 if Dir["/usr/local/.git/*"].empty?
@@ -57,6 +57,40 @@ if Dir["/usr/local/.git/*"].empty?
   system 'ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"'
   ohai 'Verifying Homebrew installation...'
   system 'brew doctor'
+end
+
+
+unless File.exists? '/usr/local/bin/rbenv'
+  ohai 'Installing rbenv...'
+  system 'brew install rbenv &>/dev/null'
+  system 'brew install rbenv-gemset &>/dev/null'
+
+  File.open("#{$home}/.bash_profile", 'a+') do |file|
+    line = 'if which rbenv >/dev/null; then eval "$(rbenv init -)"; fi'
+    file.write(line) unless File.read("#{$home}/.bash_profile").grep(/rbenv/).any?
+  end
+end
+
+unless File.exists? '/usr/local/bin/ruby-build'
+  ohai 'Installing ruby-build...'
+  system 'brew install ruby-build &>/dev/null'
+end
+
+unless File.exists? "#{$home}/.rbenv/versions/#{$ruby_version}/"
+  ohai "Installing Ruby #{$ruby_version} (hang tight, this will take a while)"
+  %x[rbenv install #{$ruby_version} &>/dev/null]
+  system "rbenv global #{$ruby_version} &>/dev/null"
+  system 'eval "$(rbenv init -)"'
+end
+
+unless File.exists? "#{$home}/.rbenv/versions/#{$ruby_version}/gemsets/global"
+  system "mkdir -p #{$home}/.config/global-gemset && cd #{$home}/.config/global-gemset"
+  system 'echo global > .rbenv-gemsets'
+  system "rbenv gemset create #{$ruby_version} global"
+end
+
+unless gem_installed? 'rbenv-rehash'
+  system "#{$home}/.rbenv/shims/gem install rbenv-rehash --no-ri --no-rdoc &>/dev/null"
 end
 
 ohai 'Installing Puppet...'
