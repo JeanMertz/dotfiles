@@ -118,7 +118,7 @@ end
 if Dir["#{$home}/dotfiles/.git/*"].empty?
   ohai 'Cloning Dotfiles repository...'
 
-  if options[:development]
+  if @options[:development]
     system "cp -R #{$home}/Dropbox/dotfiles-next #{$home}/dotfiles"
   else
     system "git clone https://github.com/jeanmertz/dotfiles #{$home}/dotfiles"
@@ -130,7 +130,7 @@ if Dir["#{$home}/dotfiles/.git/*"].empty?
 else
   ohai 'Pulling latest changes from "next" branch...'
 
-  if options[:development]
+  if @options[:development]
     system "sudo rm -R #{$home}/dotfiles"
     system "cp -R #{$home}/Dropbox/dotfiles-next #{$home}/dotfiles"
   else
