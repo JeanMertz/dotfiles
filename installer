@@ -52,9 +52,12 @@ ohai 'This script will install:'
   puts "#{HOME}/#{file}"
 end
 
-ohai 'Installing Homebrew...'
-system 'ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"'
-ohai 'Homebrew successfully installed.'
+if Dir["/usr/local/.git/*"].empty?
+  ohai 'Installing Homebrew...'
+  system 'ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"'
+  ohai 'Verifying Homebrew installation...'
+  system 'brew doctor'
+end
 
 ohai 'Installing Puppet...'
 system 'brew install puppet'
