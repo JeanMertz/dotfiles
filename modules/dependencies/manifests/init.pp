@@ -1,8 +1,7 @@
 class dependencies {
-
   # curl
+  # bash
 
-  package { 'curl':
-    provider => 'brew'
-  }
+  package { 'curl': }
+  package { 'bash': }
 }

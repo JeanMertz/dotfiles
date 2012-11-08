@@ -10,6 +10,8 @@ class terminal {
     # => http://nils-blum-oeste.net/getting-started-with-tmux
     # => http://gyaresu.org/hacking/2012/07/03/tmux-and-vim-powerline/
     # => http://robots.thoughtbot.com/post/19398560514/how-to-copy-and-paste-with-tmux-on-mac-os-x (read comments)
+  # powerline (tmux)
+    # => https://gist.github.com/1595572
   # tmuxinator
     # => http://thedrearlight.com/blog/tmuxinator.html
 
@@ -30,5 +32,11 @@ class terminal {
   package { 'tmuxinator':
     provider  => gem,
     require   => Package['tmux']
+  }
+
+  vcsrepo { "/Users/${user}/.config/modules/tmux-powerline":
+    source => 'https://github.com/erikw/tmux-powerline.git',
+    require   => [Package['curl'], Package['bash']],
+    user => $user
   }
 }
