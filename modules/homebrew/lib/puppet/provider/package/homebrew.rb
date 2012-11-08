@@ -30,7 +30,7 @@ Puppet::Type.type(:package).provide(:brew, :parent => Puppet::Provider::Package)
     end
 
     # Fail hard if there is no formula available.
-    if output =~ /Error: No available formula/
+    if output =~ /Error: No available formula/i
       raise Puppet::ExecutionFailure, "Could not find package #{@resource[:name]}"
     end
   end
