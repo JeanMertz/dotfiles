@@ -6,10 +6,10 @@ require 'optparse'
 $ruby_version = '1.9.3-p194'
 $home = File.expand_path('~')
 
-options = {}
+@options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: installer [options]"
-  opts.on("-d", "--development", "Run in development mode") { |d| options[:development] = d }
+  opts.on("-d", "--development", "Run in development mode") { |o| @options[:development] = o }
 end.parse!
 
 module Tty extend self
