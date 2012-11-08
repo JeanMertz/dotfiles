@@ -93,9 +93,10 @@ unless gem_installed? 'rbenv-rehash'
   system "#{$home}/.rbenv/shims/gem install rbenv-rehash --no-ri --no-rdoc &>/dev/null"
 end
 
-ohai 'Installing Puppet...'
-system 'brew install puppet'
-ohai 'Puppet successfully installed.'
+unless gem_installed? 'puppet'
+  ohai 'Installing Puppet...'
+  system "#{$home}/.rbenv/shims/gem install puppet -v 3.0.1 --no-ri --no-rdoc &>/dev/null"
+end
 
 ohai 'Cloning Dotfiles repository...'
 system 'git clone https://github.com/jeanmertz/dotfiles #{HOME}/dotfiles'
