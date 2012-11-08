@@ -148,8 +148,10 @@ opts += @options[:puppet].gsub(/ /,' --') if @options[:puppet]
 
 system "cd #{$home}/dotfiles/ && sudo #{$home}/.rbenv/shims/puppet apply puppet.pp --group 0 --modulepath=./modules #{opts}", :verbose => true
 
-ohai 'Puppet completed successfully, your system is now fully bootstrapped'
+ohai 'Changing shell to fishfish...'
+system 'chsh -s /usr/local/bin/fish', :verbose => true
 
+ohai 'Installation completed.'
 warn 'Some Homebrew installations might have post-installation instructions.'
 warn 'To see those instructions, run "brew info <formula>" for the following formulas:'
 system 'brew list', :verbose => true
