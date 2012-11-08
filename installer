@@ -32,11 +32,13 @@ class Array
   end
 end
 
-def gem_installed? gem
-  if defined?(Gem::Specification.find_all_by_name)
-    Gem::Specification.find_all_by_name(gem).any?
+def gem_installed? name
+  if Dir.glob("#{$home}/.rbenv/versions/#{$ruby_version}/gemsets/global/gems/#{name}*")
+    true
+  elsif defined?(Gem::Specification.find_all_by_name)
+    Gem::Specification.find_all_by_name(name).any?
   else
-    Gem.available?(gem)
+    Gem.available?(name)
   end
 end
 
