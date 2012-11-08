@@ -143,8 +143,8 @@ end
 
 ohai 'Launching Puppet installation script...'
 opts = ''
-opts += ' --verbose' if options[:verbose]
-opts += ' --noop' if options[:noop]
+opts += ' --verbose' if @options[:verbose]
+opts += ' --noop' if @options[:noop]
 
 system "cd #{$home}/dotfiles/ && sudo puppet apply puppet.pp --modulepath=./modules #{opts}", :verbose => true
 
