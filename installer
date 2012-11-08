@@ -98,11 +98,17 @@ unless gem_installed? 'puppet'
   system "#{$home}/.rbenv/shims/gem install puppet -v 3.0.1 --no-ri --no-rdoc &>/dev/null"
 end
 
-ohai 'Cloning Dotfiles repository...'
-system 'git clone https://github.com/jeanmertz/dotfiles #{HOME}/dotfiles'
-ohai 'Checking out "next" branch...'
-system 'cd #{HOME}/dotfiles'
-system 'git checkout next'
+if Dir["#{$home}/dotfiles/.git/*"].empty?
+  ohai 'Cloning Dotfiles repository...'
+  system "git clone https://github.com/jeanmertz/dotfiles #{$home}/dotfiles"
+  ohai 'Checking out "next" branch...'
+  system "cd #{$home}/dotfiles"
+  system 'git checkout next'
+else
+  ohai 'Pulling latest changes from "next" branch...'
+  system "cd #{$home}/dotfiles"
+  system 'git pull next'
+end
 
 ohai 'Launching Puppet installation script...'
 system 'cd #{HOME}/dotfiles/ && sudo puppet apply osx.pp'
