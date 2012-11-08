@@ -6,6 +6,12 @@ class terminal {
     # => https://raw.github.com/DarkStarSword/junk/master/vi-mode.fish
     # => http://canadian-fury.com/2012/06/06/fish-shell/
     # => https://github.com/zmalltalker/fish-nuggets
+  # tmux
+    # => http://nils-blum-oeste.net/getting-started-with-tmux
+    # => http://gyaresu.org/hacking/2012/07/03/tmux-and-vim-powerline/
+    # => http://robots.thoughtbot.com/post/19398560514/how-to-copy-and-paste-with-tmux-on-mac-os-x (read comments)
+  # tmuxinator
+    # => http://thedrearlight.com/blog/tmuxinator.html
 
   package { 'fishfish':
     provider  => brew,
@@ -22,5 +28,10 @@ class terminal {
 
   package { 'tmux':
     provider  => brew
+  }
+
+  package { 'tmuxinator':
+    provider  => gem,
+    require   => Package['tmux']
   }
 }
