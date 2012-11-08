@@ -1,9 +1,16 @@
 #!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
 # Some parts kindly taken from Homebrew installer
 require 'rubygems'
+require 'optparse'
 
 $ruby_version = '1.9.3-p194'
 $home = File.expand_path('~')
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: installer [options]"
+  opts.on("-d", "--development", "Run in development mode") { |d| options[:development] = d }
+end.parse!
 
 module Tty extend self
   def blue; bold 34; end
@@ -100,14 +107,26 @@ end
 
 if Dir["#{$home}/dotfiles/.git/*"].empty?
   ohai 'Cloning Dotfiles repository...'
-  system "git clone https://github.com/jeanmertz/dotfiles #{$home}/dotfiles"
+
+  if options[:development]
+    system "cp -R #{$home}/Dropbox/dotfiles-next #{$home}/dotfiles"
+  else
+    system "git clone https://github.com/jeanmertz/dotfiles #{$home}/dotfiles"
+  end
+
   ohai 'Checking out "next" branch...'
   system "cd #{$home}/dotfiles"
   system 'git checkout next'
 else
   ohai 'Pulling latest changes from "next" branch...'
-  system "cd #{$home}/dotfiles"
-  system 'git pull next'
+
+  if options[:development]
+    system "sudo rm -R #{$home}/dotfiles"
+    system "cp -R #{$home}/Dropbox/dotfiles-next #{$home}/dotfiles"
+  else
+    system "cd #{$home}/dotfiles"
+    system 'git pull next'
+  end
 end
 
 ohai 'Launching Puppet installation script...'
