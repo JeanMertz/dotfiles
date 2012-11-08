@@ -49,7 +49,10 @@ end
 
 def system command, opts = {}
   command += ' &>/dev/null' unless @options[:verbose] || opts[:verbose]
-  abort "Failed during: #{command}" unless Kernel.system(command)
+
+  if ! Kernel.system(command) && opts[:abort] != false
+    abort "Failed during: #{command}"
+  end
 end
 
 
@@ -87,7 +90,7 @@ end
 
 unless File.exists? "#{$home}/.rbenv/versions/#{$ruby_version}/"
   ohai "Installing Ruby #{$ruby_version} (hang tight, this will take a while)"
-  system "rbenv install #{$ruby_version}"
+  system "rbenv install #{$ruby_version}", :abort => false
   system "rbenv global #{$ruby_version}"
   system 'eval "$(rbenv init -)"'
 end
