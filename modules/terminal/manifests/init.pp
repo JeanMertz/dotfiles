@@ -14,7 +14,6 @@ class terminal {
     # => http://thedrearlight.com/blog/tmuxinator.html
 
   package { 'fishfish':
-    provider  => brew,
     install_options => { 'flags' => '--HEAD' }
   }
 
@@ -26,9 +25,7 @@ class terminal {
     require   => Package['fishfish']
   }
 
-  package { 'tmux':
-    provider  => brew
-  }
+  package { 'tmux': }
 
   package { 'tmuxinator':
     provider  => gem,
