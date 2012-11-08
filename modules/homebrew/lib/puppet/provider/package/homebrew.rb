@@ -10,6 +10,11 @@ Puppet::Type.type(:package).provide(:brew, :parent => Puppet::Provider::Package)
 
   commands :brew => "/usr/local/bin/brew"
 
+  def brew *args
+    uid = `stat -f '%u %Su' /dev/console`.split(' ').first
+    Puppet::Util::Execution.execute args.unshift('/usr/local/bin/brew'), :uid => uid, :gid => 20
+  end
+
   # Install packages, known as formulas, using brew.
   def install
     should = @resource[:ensure]
