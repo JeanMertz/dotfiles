@@ -13,7 +13,7 @@ Puppet::Type.type(:package).provide(:brew, :parent => Puppet::Provider::Package)
   # Install packages, known as formulas, using brew.
   def install
     should = @resource[:ensure]
-    opts = @resource[:install_options] ? @resource[:install_options].flatten : {}
+    opts = @resource[:install_options] ? @resource[:install_options].flatten.first : {}
 
     package_name = @resource[:name]
     case should
@@ -23,8 +23,8 @@ Puppet::Type.type(:package).provide(:brew, :parent => Puppet::Provider::Package)
       package_name += "-#{should}"
     end
 
-    if opts[0]['flags']
-      output = brew :install, opts[0]['flags'], package_name
+    if opts['flags']
+      output = brew :install, opts['flags'], package_name
     else
       output = brew :install, package_name
     end
