@@ -1,5 +1,6 @@
 #!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
 # Some parts kindly taken from Homebrew installer
+require 'rubygems'
 
 DOTFILES_PREFIX = '~/dotfiles'
 HOME = File.expand_path('~')
@@ -19,6 +20,14 @@ class Array
     cp = dup
     first = cp.shift
     cp.map{ |arg| arg.gsub " ", "\\ " }.unshift(first) * " "
+  end
+end
+
+def gem_installed? gem
+  if defined?(Gem::Specification.find_all_by_name)
+    Gem::Specification.find_all_by_name(gem).any?
+  else
+    Gem.available?(gem)
   end
 end
 
