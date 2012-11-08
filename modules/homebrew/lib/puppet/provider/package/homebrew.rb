@@ -6,12 +6,14 @@ Puppet::Type.type(:package).provide(:brew, :parent => Puppet::Provider::Package)
   confine  :operatingsystem => :darwin
 
   has_feature :versionable
+  has_feature :install_options
 
   commands :brew => "/usr/local/bin/brew"
 
   # Install packages, known as formulas, using brew.
   def install
     should = @resource[:ensure]
+    opts = @resource[:install_options] ? @resource[:install_options].flatten : {}
 
     package_name = @resource[:name]
     case should
@@ -21,7 +23,11 @@ Puppet::Type.type(:package).provide(:brew, :parent => Puppet::Provider::Package)
       package_name += "-#{should}"
     end
 
-    output = brew(:install, package_name)
+    if opts[0]['flags']
+      output = brew :install, opts[0]['flags'], package_name
+    else
+      output = brew :install, package_name
+    end
 
     # Fail hard if there is no formula available.
     if output =~ /Error: No available formula/
