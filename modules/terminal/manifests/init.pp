@@ -19,4 +19,8 @@ class terminal {
     mode      => '0644',
     require   => Package['fishfish']
   }
+
+  package { 'tmux':
+    provider  => brew
+  }
 }
