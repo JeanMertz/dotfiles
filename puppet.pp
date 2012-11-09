@@ -1,5 +1,6 @@
 node default {
 
+  $user = 'Jean'
   Package { ensure => latest, provider => brew }
   Vcsrepo { ensure => latest, provider => git }
 
