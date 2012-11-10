@@ -96,6 +96,8 @@ unless File.exists? "#{$home}/.rbenv/versions/#{$ruby_version}/"
   system "rbenv install #{$ruby_version}", :abort => false
   system "rbenv global #{$ruby_version}"
   system 'eval "$(rbenv init -)"'
+  ohai 'Updating Rubygems installation...'
+  system "#{$home}/.rbenv/shims/gem update --system"
 end
 
 unless File.exists? "#{$home}/.rbenv/versions/#{$ruby_version}/gemsets/global"
