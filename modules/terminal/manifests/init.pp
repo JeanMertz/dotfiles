@@ -29,14 +29,20 @@ class terminal {
 
   package { 'tmux': }
 
+  file { '/Users/${user}/.tmux.conf':
+   ensure     => 'link',
+   target     => '/Users/${user}/dotfiles/config/tmux/tmux.conf',
+   require    => Package['tmux']
+  }
+
   package { 'tmuxinator':
     provider  => gem,
-    require   => Package['tmux']
+    require   => Package['tmux'],
   }
 
   vcsrepo { "/Users/${user}/.config/modules/tmux-powerline":
-    source => 'https://github.com/erikw/tmux-powerline.git',
+    source    => 'https://github.com/erikw/tmux-powerline.git',
     require   => [Package['curl'], Package['bash']],
-    user => $user
+    user      => $user,
   }
 }
