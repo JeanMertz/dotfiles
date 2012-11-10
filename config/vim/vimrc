@@ -1,0 +1,3 @@
+syntax on
+filetype plugin indent on
+set nocompatible                " be iMproved

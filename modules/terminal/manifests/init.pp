@@ -24,7 +24,7 @@ class terminal {
     owner     => 'root',
     group     => 'wheel',
     mode      => '0644',
-    require   => Package['fishfish']
+    require   => Package['fishfish'],
   }
 
   package { 'tmux': }
