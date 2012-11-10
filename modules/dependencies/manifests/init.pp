@@ -4,4 +4,5 @@ class dependencies {
 
   package { 'curl': }
   package { 'bash': }
+  package { 'ctags': }
 }

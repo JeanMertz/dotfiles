@@ -21,4 +21,19 @@ class editors {
     user      => $user,
   }
 
+  package { 'gem-ctags':
+    provider  => gem,
+    require   => Package['ctags'],
+  }
+
+  package { 'gem-browse':
+    provider  => gem,
+  }
+
+  exec { 'gem ctags':
+    path      => '/Users/${user}/.rbenv/shims/',
+    requires  => Package['gem-ctags'],
+    user      => $user,
+  }
+
 }
