@@ -143,6 +143,11 @@ else
   end
 end
 
+if Dir["#{$home}/.config/"].empty?
+  ohai 'Symlinking config directory to ~/.config/...'
+  system "/bin/ln -s #{$home}/dotfiles/config/ #{$home}/.config"
+end
+
 ohai 'Launching Puppet installation script...'
 opts =  ''
 opts += ' --verbose' if @options[:verbose]
