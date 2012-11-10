@@ -45,4 +45,15 @@ class terminal {
     require   => [Package['curl'], Package['bash']],
     user      => $user,
   }
+
+  exec { 'github-issues':
+    command   => 'curl -s https://raw.github.com/stephencelis/ghi/master/ghi > ghi && \
+                  chmod 755 ghi && \
+                  mv ghi /usr/local/bin',
+    cwd       => '/tmp',
+    path      => '/usr/local/bin',
+    user      => $user,
+    creates   => '/usr/local/bin/ghi',
+    require   => Package['curl'],
+  }
 }
