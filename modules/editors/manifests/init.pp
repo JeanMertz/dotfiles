@@ -36,4 +36,6 @@ class editors {
     user      => $user,
   }
 
+  package { 'vimpager': }
+
 }
