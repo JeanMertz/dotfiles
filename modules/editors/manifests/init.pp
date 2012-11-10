@@ -38,4 +38,19 @@ class editors {
 
   package { 'vimpager': }
 
+  # bundler for vim, vundle
+  vcsrepo { 'vundle':
+    path      => '/Users/${user}/dotfiles/config/vim/bundle/vundle',
+    source    => 'git://github.com/gmarik/vundle.git',
+    user      => $user,
+    require   => Exec['macvim'],
+  }
+
+  exec { 'vundle-install':
+    command   => 'vim +BundleInstall +qall',
+    path      => '/usr/local/bin/',
+    user      => $user,
+    require   => Vcsrepo['vundle'],
+  }
+
 }

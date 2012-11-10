@@ -1,3 +1,49 @@
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
 syntax on
 filetype plugin indent on
+
 set nocompatible                " be iMproved
+filetype on                     " OS X fix?
+filetype off                    " required!
+
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" Jean's bundle
+Bundle 'astashov/vim-ruby-debugger'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-rhubarb'
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/ragtag'
+Bundle 'tpope/surround'
+Bundle 'tpope/cucumber'
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'rodjek/vim-puppet'
+Bundle 'godlygeek/tabular'
+
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+
