@@ -14,4 +14,11 @@ class editors {
     # => https://github.com/gmarik/vundle/issues/182
     # => https://github.com/gmarik/vundle/wiki/Examples
 
+  exec { 'macvim':
+    command   => 'brew install --override-system-vim --with-cscope --with-lua \
+                  https://raw.github.com/JeanMertz/dotfiles/next/formula/macvim.rb',
+    creates   => '/usr/local/Cellar/macvim/',
+    user      => $user,
+  }
+
 }
