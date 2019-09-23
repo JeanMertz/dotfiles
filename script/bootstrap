@@ -40,6 +40,10 @@ mkdir -p \
 pause 'Symlinking dotfiles.'
 ln -snf "$DOTFILES/alacritty" "$HOME/.config/alacritty"
 ln -snf "$DOTFILES/fish"      "$HOME/.config/fish"
+ln -snf "$DOTFILES/gpg"       "$HOME/.gpg"
+
+# Set correct access rights to files and folders
+chmod 700 "$HOME/.gpg"
 
 pause 'Syncing configuration defaults.'
 curl -LSs 'https://raw.githubusercontent.com/jwilm/alacritty/master/alacritty.yml' > alacritty/alacritty.default.yml
