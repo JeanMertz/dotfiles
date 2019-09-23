@@ -37,4 +37,7 @@ mkdir -p \
 	"$HOME/.config" \
 	"$HOME/.local/share"
 
+pause 'Installing macOS software updates.'
+softwareupdate --install --all --verbose
+
 printf "\n%s" "DONE! Some changes might require a restart to take effect."
