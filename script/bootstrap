@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# This script is intended to be re-run at various times. It should not do any
+# destructive actions.
+set -e
+
+if [ -z "$1" ]; then
+	echo 2>&1 "usage: $0 DOTFILES_PATH"
+	exit 1
+fi
+
+DOTFILES="$1"
+
+pause() {
+	printf "\n%s\n%s" "$*" "Press RETURN to continue or ^C to abort..."
+	read -r
+}
+
+run() {
+	pause "Running \`$*\`"
+	eval "$@"
+}
+
+cd "$(dirname "$0")" || exit 1
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+printf "\n%s" "DONE! Some changes might require a restart to take effect."
