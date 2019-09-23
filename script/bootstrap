@@ -38,7 +38,11 @@ mkdir -p \
 	"$HOME/.local/share"
 
 pause 'Symlinking dotfiles.'
-ln -snf "$DOTFILES/fish" "$HOME/.config/fish"
+ln -snf "$DOTFILES/alacritty" "$HOME/.config/alacritty"
+ln -snf "$DOTFILES/fish"      "$HOME/.config/fish"
+
+pause 'Syncing configuration defaults.'
+curl -LSs 'https://raw.githubusercontent.com/jwilm/alacritty/master/alacritty.yml' > alacritty/alacritty.default.yml
 
 pause 'Installing Homebrew.'
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
