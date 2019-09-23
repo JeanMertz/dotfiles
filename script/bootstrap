@@ -37,6 +37,9 @@ mkdir -p \
 	"$HOME/.config" \
 	"$HOME/.local/share"
 
+pause 'Symlinking dotfiles.'
+ln -snf "$DOTFILES/fish" "$HOME/.config/fish"
+
 pause 'Installing Homebrew.'
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 run brew doctor
