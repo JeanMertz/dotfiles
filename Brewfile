@@ -1,3 +1,5 @@
 tap "homebrew/bundle"
+tap "homebrew/cask"
 tap "homebrew/core"
 brew "fish"
+cask "alacritty"
