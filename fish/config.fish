@@ -1,6 +1,9 @@
 # Set language configuration
 set -gx LC_ALL en_GB.UTF-8
 
+# Set the corect color codes for gruvbox.
+bash "$HOME/.config/fish/gruvbox_256palette.sh"
+
 # Remove all universal variables.
 for v in (set --show | string replace -rf '^\$([^:[]+).*: set in universal.*' '$1')
     set -e $v
