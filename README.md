@@ -1,7 +1,7 @@
 # Dotfiles
 
 1. Clone repository
-2. Run `sh setup.sh`
+2. Run `script/bootstrap`
 3. Enjoy
 
 ## FAQ

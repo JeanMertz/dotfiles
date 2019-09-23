@@ -4,12 +4,9 @@
 # destructive actions.
 set -e
 
-if [ -z "$1" ]; then
-	echo 2>&1 "usage: $0 DOTFILES_PATH"
-	exit 1
-fi
+cd "$(dirname "$0")/.." || exit 1
 
-DOTFILES="$1"
+DOTFILES="$PWD"
 
 pause() {
 	printf "\n%s\n%s" "$*" "Press RETURN to continue or ^C to abort..."
@@ -20,8 +17,6 @@ run() {
 	pause "Running \`$*\`"
 	eval "$@"
 }
-
-cd "$(dirname "$0")" || exit 1
 
 # Ask for the administrator password upfront
 sudo -v
