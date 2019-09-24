@@ -33,9 +33,10 @@ mkdir -p \
 	"$HOME/.local/share"
 
 pause 'Symlinking dotfiles.'
-ln -snf "$DOTFILES/alacritty" "$HOME/.config/alacritty"
-ln -snf "$DOTFILES/fish"      "$HOME/.config/fish"
-ln -snf "$DOTFILES/gpg"       "$HOME/.gpg"
+ln -snf "$DOTFILES/alacritty"  "$HOME/.config/alacritty"
+ln -snf "$DOTFILES/fish"       "$HOME/.config/fish"
+ln -snf "$DOTFILES/git/config" "$HOME/.gitconfig"
+ln -snf "$DOTFILES/gpg"        "$HOME/.gpg"
 
 # Set correct access rights to files and folders
 chmod 700 "$HOME/.gpg"
