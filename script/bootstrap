@@ -7,6 +7,9 @@ set -e
 cd "$(dirname "$0")/.." || exit 1
 
 DOTFILES="$PWD"
+XDG_CACHE_HOME="$HOME/.cache"
+XDG_CONFIG_HOME="$HOME/.config"
+XDG_DATA_HOME="$HOME/.local/share"
 
 pause() {
 	printf "\n%s\n%s" "$*" "Press RETURN to continue or ^C to abort..."
@@ -27,22 +30,19 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # XDG Base Directories
 #
 # see: https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-mkdir -p \
-	"$HOME/.cache" \
-	"$HOME/.config" \
-	"$HOME/.local/share"
+mkdir -p "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME"
 
 pause 'Symlinking dotfiles to XDG paths.'
-ln -snf "$DOTFILES/alacritty"  "$HOME/.config/alacritty"
-ln -snf "$DOTFILES/fish"       "$HOME/.config/fish"
-ln -snf "$DOTFILES/git"        "$HOME/.config/git"
-ln -snf "$DOTFILES/gpg"        "$HOME/.config/gpg"
+ln -snf "$DOTFILES/alacritty"  "$XDG_CONFIG_HOME/alacritty"
+ln -snf "$DOTFILES/fish"       "$XDG_CONFIG_HOME/fish"
+ln -snf "$DOTFILES/git"        "$XDG_CONFIG_HOME/git"
+ln -snf "$DOTFILES/gpg"        "$XDG_CONFIG_HOME/gpg"
 
-pause 'Symlinking required dotfiles to $HOME.'
-ln -snf "$HOME/.config/git/config" "$HOME/.gitconfig"
+pause 'Symlinking required dotfiles to HOME.'
+ln -snf "$XDG_CONFIG_HOME/git/config" "$HOME/.gitconfig"
 
 # Set correct access rights to files and folders
-chmod 700 "$HOME/.config/gpg"
+chmod 700 "$XDG_CONFIG_HOME/gpg"
 
 pause 'Syncing configuration defaults.'
 curl -LSs 'https://raw.githubusercontent.com/jwilm/alacritty/master/alacritty.yml' > alacritty/alacritty.default.yml
