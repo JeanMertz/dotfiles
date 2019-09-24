@@ -32,11 +32,14 @@ mkdir -p \
 	"$HOME/.config" \
 	"$HOME/.local/share"
 
-pause 'Symlinking dotfiles.'
+pause 'Symlinking dotfiles to XDG paths.'
 ln -snf "$DOTFILES/alacritty"  "$HOME/.config/alacritty"
 ln -snf "$DOTFILES/fish"       "$HOME/.config/fish"
-ln -snf "$DOTFILES/git/config" "$HOME/.gitconfig"
+ln -snf "$DOTFILES/git"        "$HOME/.config/git"
 ln -snf "$DOTFILES/gpg"        "$HOME/.config/gpg"
+
+pause 'Symlinking required dotfiles to $HOME.'
+ln -snf "$HOME/.config/git/config" "$HOME/.gitconfig"
 
 # Set correct access rights to files and folders
 chmod 700 "$HOME/.config/gpg"
