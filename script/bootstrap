@@ -40,6 +40,7 @@ ln -snf "$DOTFILES/gpg"        "$XDG_CONFIG_HOME/gpg"
 
 pause 'Symlinking required dotfiles to HOME.'
 ln -snf "$XDG_CONFIG_HOME/git/config" "$HOME/.gitconfig"
+ln -snf "$DOTFILES/rust/rustup" "$HOME/.rustup"
 
 # Set correct access rights to files and folders
 chmod 700 "$XDG_CONFIG_HOME/gpg"
