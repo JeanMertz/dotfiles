@@ -45,7 +45,7 @@ ln -snf "$XDG_CONFIG_HOME/git/config" "$HOME/.gitconfig"
 chmod 700 "$XDG_CONFIG_HOME/gpg"
 
 pause 'Syncing configuration defaults.'
-curl -LSs 'https://raw.githubusercontent.com/jwilm/alacritty/master/alacritty.yml' > alacritty/alacritty.default.yml
+curl -LSs http://git.io/JeZ1y > "$DOTFILES/alacritty/alacritty.default.yml"
 
 pause 'Installing Homebrew.'
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
