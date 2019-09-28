@@ -6,6 +6,7 @@
 	gpgsign = true
 	template = ~/.config/git/commit_template.txt
 [core]
+    excludesfile = ~/.config/git/gitignore
     autocrlf = input
     safecrlf = true
 [help]
