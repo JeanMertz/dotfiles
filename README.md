@@ -6,7 +6,7 @@
 
 ## FAQ
 
-#### How do I make sure `Brewfile` and local setup are kept in sync?
+#### How do I make sure my `Brewfile` and local setup are kept in sync?
 
 Run `brew bundle cleanup` to see which packages are installed locally, but not
 part of your `Brewfile`. Add `--force` to remove said packages, or add them to
