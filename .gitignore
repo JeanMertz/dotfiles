@@ -1,3 +1,4 @@
 .DS_Store
+fish/fish_variables
 gpg/*.kbx
 gpg/trustdb.gpg
