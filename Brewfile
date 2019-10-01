@@ -11,4 +11,5 @@ cask "1password-cli"
 cask "alacritty"
 cask "dash"
 cask "notion"
+cask "soulver"
 mas "DaisyDisk", id: 411643860
