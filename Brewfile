@@ -20,3 +20,4 @@ mas "DaisyDisk", id: 411643860
 mas "Pixelmator", id: 407963104
 mas "Things 3", id: 904280696
 mas "1Password", id: 1333542190
+mas "Bear", id: 1091189122
