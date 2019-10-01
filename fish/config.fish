@@ -35,4 +35,5 @@ set -gx HOMEBREW_NO_ANALYTICS 1
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # GPG config
+# see: https://www.gnupg.org/documentation/manuals/gnupg/Common-Problems.html
 set -gx GPG_TTY (tty)
