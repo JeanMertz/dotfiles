@@ -17,3 +17,4 @@ cask "soulver"
 cask "tableplus"
 
 mas "DaisyDisk", id: 411643860
+mas "Pixelmator", id: 407963104
