@@ -18,3 +18,4 @@ cask "tableplus"
 
 mas "DaisyDisk", id: 411643860
 mas "Pixelmator", id: 407963104
+mas "Things 3", id: 904280696
