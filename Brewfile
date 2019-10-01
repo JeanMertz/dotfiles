@@ -12,4 +12,5 @@ cask "alacritty"
 cask "dash"
 cask "notion"
 cask "soulver"
+cask "tableplus"
 mas "DaisyDisk", id: 411643860
