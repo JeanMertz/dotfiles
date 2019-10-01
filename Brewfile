@@ -9,5 +9,6 @@ brew "neovim"
 brew "pinentry-mac"
 cask "1password-cli"
 cask "alacritty"
+cask "dash"
 cask "notion"
 mas "DaisyDisk", id: 411643860
