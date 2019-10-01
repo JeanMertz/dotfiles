@@ -47,11 +47,15 @@ chmod 700 "$XDG_CONFIG_HOME/gpg"
 
 pause 'Syncing configuration defaults.'
 curl -LSs http://git.io/JeZ1y > "$DOTFILES/alacritty/alacritty.default.yml"
+curl -LSs http://git.io/Jen71 > "$DOTFILES/macos.default.sh"
 
 pause 'Installing Homebrew.'
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 run brew doctor
 run brew bundle --verbose
+
+pause 'Writing macOS "defaults"'
+sh macos.sh
 
 pause 'Installing macOS software updates.'
 softwareupdate --install --all --verbose
