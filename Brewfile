@@ -14,6 +14,7 @@ cask "alacritty"
 cask "dash"
 cask "keyboard-maestro"
 cask "kitty"
+cask "smoothscroll"
 cask "soulver"
 cask "tableplus"
 
