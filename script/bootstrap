@@ -37,6 +37,7 @@ ln -snf "$DOTFILES/alacritty"  "$XDG_CONFIG_HOME/alacritty"
 ln -snf "$DOTFILES/fish"       "$XDG_CONFIG_HOME/fish"
 ln -snf "$DOTFILES/git"        "$XDG_CONFIG_HOME/git"
 ln -snf "$DOTFILES/gpg"        "$XDG_CONFIG_HOME/gpg"
+ln -snf "$DOTFILES/kitty"      "$XDG_CONFIG_HOME/kitty"
 
 pause 'Symlinking required dotfiles to HOME.'
 ln -snf "$XDG_CONFIG_HOME/git/config" "$HOME/.gitconfig"
