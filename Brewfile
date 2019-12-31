@@ -14,7 +14,6 @@ cask "alacritty"
 cask "dash"
 cask "keyboard-maestro"
 cask "kitty"
-cask "notion"
 cask "soulver"
 cask "tableplus"
 
