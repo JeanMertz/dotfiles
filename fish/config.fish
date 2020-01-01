@@ -46,10 +46,10 @@ set fish_pager_color_progress       brwhite --background=cyan
 set fish_pager_color_secondary      brgreen --background=magenta
 
 # commonly used folders
-set -gx GNUPGHOME       "$XDG_CONFIG_HOME/gpg"
 set -gx XDG_CACHE_HOME  "$HOME/.cache"
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_DATA_HOME   "$HOME/.local/share"
+set -gx GNUPGHOME       "$XDG_CONFIG_HOME/gpg"
 
 # Colored man pages
 set -x LESS_TERMCAP_mb (printf "\e[01;31m")
