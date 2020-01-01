@@ -16,6 +16,19 @@ end
 # Kitty completion
 kitty + complete setup fish | source
 
+# Window title logic (runs before and after every command)
+function fish_title
+  if test "$_" = "fish"
+    if test "$PWD" = "$HOME"
+      echo "~"
+    else
+      basename "$PWD"
+    end
+  else
+    echo (basename "$PWD"): (status current-command)
+  end
+end
+
 # See: https://fishshell.com/docs/current/index.html#variables-color
 #
 # Named colors (such as "yellow") will be set to "gruvbox" colors using
