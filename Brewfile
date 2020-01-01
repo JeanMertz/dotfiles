@@ -11,6 +11,7 @@ brew "pinentry-mac"
 
 cask "1password-cli"
 cask "alacritty"
+cask "bartender"
 cask "blender"
 cask "dash"
 cask "keyboard-maestro"
