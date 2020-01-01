@@ -22,6 +22,7 @@ cask "soulver"
 cask "tableplus"
 cask "qbserve"
 
+mas "1Blocker", id: 1107421413
 mas "DaisyDisk", id: 411643860
 mas "Pixelmator Pro", id: 1289583905
 mas "Things 3", id: 904280696
