@@ -21,13 +21,13 @@ end
 # The pound-color codes serve no purpose other than making the Vim color code
 # highlight plugin show what colr is used.
 set fish_color_normal               ebdbb2 #ebdbb2
-set fish_color_command              yellow
-set fish_color_quote                green
-set fish_color_redirection          red
-set fish_color_end                  red
-set fish_color_error                red
-set fish_color_param                blue
-set fish_color_comment              black
+set fish_color_command              bryellow #fadb2f
+set fish_color_quote                green #98971a
+set fish_color_redirection          red #cc241d
+set fish_color_end                  red #cc241d
+set fish_color_error                red #cc241d
+set fish_color_param                ebdbb2 #ebdbb2
+set fish_color_comment              a89984 #a89984
 set fish_color_match                --background=orange
 set fish_color_selection            white --bold --background=brblack
 set fish_color_search_match         bryellow --background=brblack
