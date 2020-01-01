@@ -20,6 +20,7 @@ cask "kitty"
 cask "smoothscroll"
 cask "soulver"
 cask "tableplus"
+cask "qbserve"
 
 mas "DaisyDisk", id: 411643860
 mas "Pixelmator Pro", id: 1289583905
