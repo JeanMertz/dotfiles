@@ -54,9 +54,9 @@ set fish_color_selection            white --bold --background=brblack
 set fish_color_search_match         bryellow --background=brblack
 set fish_color_operator             magenta
 set fish_color_escape               aqua
-set fish_color_cwd                  green
+set fish_color_cwd                  cyan #689d6a
 set fish_color_autosuggestion       grey
-set fish_color_user                 brgreen #green
+set fish_color_user                 brgreen #b8bb26
 set fish_color_host                 normal
 set fish_color_cancel               --reverse
 
