@@ -3,6 +3,7 @@ tap "homebrew/cask"
 tap "homebrew/core"
 
 brew "fish"
+brew "fzf"
 brew "git"
 brew "gpg"
 brew "mas"

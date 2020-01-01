@@ -87,6 +87,10 @@ set -x LESS_TERMCAP_so (printf "\e[01;44;33m")
 set -x LESS_TERMCAP_ue (printf "\e[0m")
 set -x LESS_TERMCAP_us (printf "\e[01;32m")
 
+# FZF configuration
+set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git \$dir'
+set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+
 # Disable Homebrew Analytics
 set -gx HOMEBREW_NO_ANALYTICS 1
 

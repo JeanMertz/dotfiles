@@ -55,6 +55,9 @@ pause 'Installing Homebrew.'
 run brew doctor
 run brew bundle --verbose
 
+pause 'Configuring FZF'.
+$(brew --prefix)/opt/fzf/install --xdg --key-bindings --completion --update-rc --no-bash --no-zsh
+
 pause 'Writing macOS "defaults"'
 sh macos.sh
 
