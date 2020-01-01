@@ -24,6 +24,7 @@ cask "qbserve"
 
 mas "1Blocker", id: 1107421413
 mas "DaisyDisk", id: 411643860
+mas "Fantastical 2", id: 975937182
 mas "Pixelmator Pro", id: 1289583905
 mas "Things 3", id: 904280696
 mas "1Password", id: 1333542190
