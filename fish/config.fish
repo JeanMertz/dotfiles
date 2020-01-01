@@ -66,8 +66,9 @@ set -x LESS_TERMCAP_us (printf "\e[01;32m")
 # Disable Homebrew Analytics
 set -gx HOMEBREW_NO_ANALYTICS 1
 
-# Set correct Homebrew paths
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+# Add required PATH variable values
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths # Homebrew
+set -g fish_user_paths "$CARGO_HOME/bin" $fish_user_paths # Cargo
 
 # GPG config
 # see: https://www.gnupg.org/documentation/manuals/gnupg/Common-Problems.html
