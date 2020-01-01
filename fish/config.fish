@@ -29,6 +29,11 @@ function fish_title
   end
 end
 
+# Prompt prefix logic (runs before every new prompt line)
+function fish_prompt --description 'Write out the prompt'
+  printf '%s%s%s %%%s ' (set_color "$fish_color_cwd" --bold) (prompt_pwd) (set_color green --bold) (set_color normal)
+end
+
 # See: https://fishshell.com/docs/current/index.html#variables-color
 #
 # Named colors (such as "yellow") will be set to "gruvbox" colors using
