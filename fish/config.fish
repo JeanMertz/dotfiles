@@ -1,6 +1,9 @@
 # Set language configuration
 set -gx LC_ALL en_GB.UTF-8
 
+# Remove Fish greeting message
+set fish_greeting
+
 # Set the corect color codes for gruvbox.
 bash "$HOME/.config/fish/gruvbox_256palette.sh"
 
