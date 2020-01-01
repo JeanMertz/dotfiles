@@ -13,6 +13,38 @@ for v in (set --show | string replace -rf '^\$([^:[]+).*: set in universal.*' '$
     set -e $v
 end
 
+# See: https://fishshell.com/docs/current/index.html#variables-color
+#
+# Named colors (such as "yellow") will be set to "gruvbox" colors using
+# `gruvbox_256palette.sh` (see above).
+#
+# The pound-color codes serve no purpose other than making the Vim color code
+# highlight plugin show what colr is used.
+set fish_color_normal               ebdbb2 #ebdbb2
+set fish_color_command              yellow
+set fish_color_quote                green
+set fish_color_redirection          red
+set fish_color_end                  red
+set fish_color_error                red
+set fish_color_param                blue
+set fish_color_comment              black
+set fish_color_match                --background=orange
+set fish_color_selection            white --bold --background=brblack
+set fish_color_search_match         bryellow --background=brblack
+set fish_color_operator             magenta
+set fish_color_escape               aqua
+set fish_color_cwd                  green
+set fish_color_autosuggestion       grey
+set fish_color_user                 brgreen #green
+set fish_color_host                 normal
+set fish_color_cancel               --reverse
+
+set fish_pager_color_prefix         fff --bold --underline #fff
+set fish_pager_color_completion
+set fish_pager_color_description    b3a06d #b3a06d
+set fish_pager_color_progress       brwhite --background=cyan
+set fish_pager_color_secondary      brgreen --background=magenta
+
 # commonly used folders
 set -gx GNUPGHOME       "$XDG_CONFIG_HOME/gpg"
 set -gx XDG_CACHE_HOME  "$HOME/.cache"
