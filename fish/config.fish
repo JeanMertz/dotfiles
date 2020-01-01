@@ -13,6 +13,9 @@ for v in (set --show | string replace -rf '^\$([^:[]+).*: set in universal.*' '$
     set -e $v
 end
 
+# Kitty completion
+kitty + complete setup fish | source
+
 # See: https://fishshell.com/docs/current/index.html#variables-color
 #
 # Named colors (such as "yellow") will be set to "gruvbox" colors using
