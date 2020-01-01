@@ -9,6 +9,8 @@
     excludesfile = ~/.config/git/gitignore
     autocrlf = input
     safecrlf = true
+[merge]
+	tool = nvim -d
 [help]
     autocorrect = 1
 [diff]
