@@ -10,6 +10,7 @@ DOTFILES="$PWD"
 XDG_CACHE_HOME="$HOME/.cache"
 XDG_CONFIG_HOME="$HOME/.config"
 XDG_DATA_HOME="$HOME/.local/share"
+XDG_RUNTIME_DIR="$TMPDIR/.run"
 
 pause() {
 	printf "\n%s\n%s" "$*" "Press RETURN to continue or ^C to abort..."
@@ -30,7 +31,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # XDG Base Directories
 #
 # see: https://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html
-mkdir -p "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME"
+mkdir -p "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_RUNTIME_DIR"
 
 pause 'Symlinking dotfiles to XDG paths.'
 ln -snf "$DOTFILES/alacritty"  "$XDG_CONFIG_HOME/alacritty"
