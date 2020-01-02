@@ -1,6 +1,6 @@
 [user]
     name = Jean Mertz
-    email = jean@mertz.fm
+    email = git@jeanmertz.com
     signingkey = 60F4E0F4
 [commit]
 	gpgsign = true
