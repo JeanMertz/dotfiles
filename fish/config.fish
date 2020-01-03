@@ -105,6 +105,10 @@ set -x LESS_TERMCAP_so (printf "\e[01;44;33m")
 set -x LESS_TERMCAP_ue (printf "\e[0m")
 set -x LESS_TERMCAP_us (printf "\e[01;32m")
 
+# Default editor
+set -x VISUAL nvim
+set -x EDITOR nvim
+
 # FZF configuration
 set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git \$dir'
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
