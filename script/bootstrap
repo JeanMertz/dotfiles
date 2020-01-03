@@ -40,6 +40,7 @@ ln -snf "$DOTFILES/git"        "$XDG_CONFIG_HOME/git"
 ln -snf "$DOTFILES/gpg"        "$XDG_CONFIG_HOME/gpg"
 ln -snf "$DOTFILES/kitty"      "$XDG_CONFIG_HOME/kitty"
 ln -snf "$DOTFILES/npm"        "$XDG_CONFIG_HOME/npm"
+ln -snf "$DOTFILES/nvim"       "$XDG_CONFIG_HOME/nvim"
 
 pause 'Symlinking required dotfiles to HOME.'
 ln -snf "$XDG_CONFIG_HOME/git/config" "$HOME/.gitconfig"
