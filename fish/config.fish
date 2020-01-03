@@ -19,6 +19,19 @@ end
 # Kitty completion
 kitty + complete setup fish | source
 
+# Abbreviations
+if status --is-interactive
+  abbr --add --global vim nvim
+
+  # Git
+  abbr --add --global gs git status
+  abbr --add --global gpu git push
+  abbr --add --global gp git pull
+  abbr --add --global ga git add .
+  abbr --add --global gap git add -p
+  abbr --add --global gco git checkout
+end
+
 # Window title logic (runs before and after every command)
 function fish_title
   if test "$_" = "fish"
