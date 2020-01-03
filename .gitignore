@@ -1,4 +1,8 @@
 .DS_Store
 fish/fish_variables
-gpg/*.kbx
+gpg/*.db
+gpg/*.kbx*
+gpg/.#*
+gpg/crls.d
+gpg/private-keys*
 gpg/trustdb.gpg
