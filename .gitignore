@@ -3,3 +3,4 @@ fish/fish_variables
 gpg/*
 !gpg/gpg-agent.conf
 !gpg/gpg.conf
+nvim/plugged
