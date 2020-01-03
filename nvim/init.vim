@@ -117,4 +117,4 @@ call plug#begin()
 Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
-colorscheme gruvbox
+colorscheme gruvbox_tweaked
