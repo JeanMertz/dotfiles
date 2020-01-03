@@ -112,3 +112,9 @@ set nofoldenable
 
 " Use ripgrep for searching
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+
+call plug#begin()
+Plug 'gruvbox-community/gruvbox'
+call plug#end()
+
+colorscheme gruvbox
