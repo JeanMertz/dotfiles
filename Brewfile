@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 
+brew "fd"
 brew "fish"
 brew "fzf"
 brew "git"
