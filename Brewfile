@@ -12,6 +12,7 @@ brew "mas"
 brew "neovim"
 brew "node"
 brew "pinentry-mac"
+brew "ripgrep"
 
 cask "1password-cli"
 cask "alacritty"
