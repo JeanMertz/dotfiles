@@ -8,6 +8,7 @@ brew "git"
 brew "gpg"
 brew "mas"
 brew "neovim"
+brew "node"
 brew "pinentry-mac"
 
 cask "1password-cli"
