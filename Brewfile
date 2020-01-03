@@ -26,6 +26,7 @@ cask "soulver"
 cask "tableplus"
 cask "tuple"
 cask "qbserve"
+cask "zoomus"
 
 mas "1Blocker", id: 1107421413
 mas "1Password", id: 1333542190
