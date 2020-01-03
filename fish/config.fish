@@ -117,9 +117,10 @@ set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -gx HOMEBREW_NO_ANALYTICS 1
 
 # Add required PATH variable values
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths # Homebrew
-set -g fish_user_paths "$CARGO_HOME/bin" $fish_user_paths # Cargo
 set -g fish_user_paths (npm -g bin) $fish_user_paths      # NPM
+set -g fish_user_paths (go env GOPATH) $fish_user_paths   # Go
+set -g fish_user_paths "$CARGO_HOME/bin" $fish_user_paths # Cargo
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths # Homebrew
 
 # GPG config
 # see: https://www.gnupg.org/documentation/manuals/gnupg/Common-Problems.html
