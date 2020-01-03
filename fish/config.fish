@@ -99,6 +99,7 @@ set -gx HOMEBREW_NO_ANALYTICS 1
 # Add required PATH variable values
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths # Homebrew
 set -g fish_user_paths "$CARGO_HOME/bin" $fish_user_paths # Cargo
+set -g fish_user_paths (npm -g bin) $fish_user_paths      # NPM
 
 # GPG config
 # see: https://www.gnupg.org/documentation/manuals/gnupg/Common-Problems.html
