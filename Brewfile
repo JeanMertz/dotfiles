@@ -24,6 +24,7 @@ cask "klokki"
 cask "smoothscroll"
 cask "soulver"
 cask "tableplus"
+cask "tuple"
 cask "qbserve"
 
 mas "1Blocker", id: 1107421413
