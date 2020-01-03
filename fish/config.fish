@@ -30,6 +30,8 @@ if status --is-interactive
   abbr --add --global ga git add .
   abbr --add --global gap git add -p
   abbr --add --global gco git checkout
+  abbr --add --global gd git diff
+  abbr --add --global gdc git diff --cached
 end
 
 # Window title logic (runs before and after every command)
