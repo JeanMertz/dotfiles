@@ -107,6 +107,7 @@ set -gx GNUPGHOME             "$XDG_CONFIG_HOME/gpg"
 set -gx MYVIMRC               "$XDG_CONFIG_HOME/nvim/init.vim"
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
 set -gx GOPATH                "$XDG_DATA_HOME/go"
+set -gx RUSTUP_HOME           "$XDG_DATA_HOME/rust/rustup"
 
 # Colored man pages
 set -x LESS_TERMCAP_mb (printf "\e[01;31m")

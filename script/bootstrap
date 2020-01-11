@@ -43,8 +43,9 @@ ln -snf "$DOTFILES/npm"        "$XDG_CONFIG_HOME/npm"
 ln -snf "$DOTFILES/nvim"       "$XDG_CONFIG_HOME/nvim"
 
 pause 'Symlinking required dotfiles to HOME.'
+mkdir -p "$XDG_DATA_HOME/rust/rustup"
 ln -snf "$XDG_CONFIG_HOME/git/config" "$HOME/.gitconfig"
-ln -snf "$DOTFILES/rust/rustup" "$HOME/.rustup"
+ln -snf "$DOTFILES/rust/rustup/settings.toml" "$XDG_DATA_HOME/rust/rustup/settings.toml"
 
 # Set correct access rights to files and folders
 chmod 700 "$XDG_CONFIG_HOME/gpg"
