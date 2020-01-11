@@ -1,3 +1,9 @@
+# temporary workaround. See: https://apple.stackexchange.com/a/375629/10897
+function apropos --wraps apropos --description 'workaround apropos Catalina bug'
+    rm -i $argv
+    ~/.local/share/workarounds/apropos.macos_10.15.1 $argv
+end
+
 # Set language configuration
 set -gx LC_ALL en_GB.UTF-8
 
