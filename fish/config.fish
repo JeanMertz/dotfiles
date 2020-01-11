@@ -113,6 +113,9 @@ set -x EDITOR nvim
 set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git \$dir'
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
+# LESS configuration
+set -x LESS '--RAW-CONTROL-CHARS --tilde --chop-long-lines --ignore-case --tabs=4'
+
 # Disable Homebrew Analytics
 set -gx HOMEBREW_NO_ANALYTICS 1
 
