@@ -3,18 +3,18 @@
     email = git@jeanmertz.com
     signingkey = 60F4E0F4
 [commit]
-	gpgsign = true
-	template = ~/.config/git/commit_template.txt
+    gpgsign = true
+    template = ~/.config/git/commit_template.txt
 [core]
     excludesfile = ~/.config/git/gitignore
     autocrlf = input
     safecrlf = true
 [merge]
-	tool = nvim -d
+    tool = nvim -d
 [help]
     autocorrect = 1
 [diff]
     algorithm = patience
     compactionHeuristic = true
 [protocol]
-	version = 2
+    version = 2
