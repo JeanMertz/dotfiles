@@ -32,12 +32,18 @@ if status --is-interactive
   # Git
   abbr --add --global gs git status
   abbr --add --global gpu git push
+  abbr --add --global gpf git push --force-with-lease
   abbr --add --global gp git pull
   abbr --add --global ga git add .
   abbr --add --global gap git add -p
   abbr --add --global gco git checkout
+  abbr --add --global gcob git checkout -b jean/
   abbr --add --global gd git diff
   abbr --add --global gdc git diff --cached
+  abbr --add --global gss git stash push --include-untracked
+  abbr --add --global gsp git stash pop
+  abbr --add --global gb git branch
+  abbr --add --global grs git restore --staged
 end
 
 # Window title logic (runs before and after every command)
