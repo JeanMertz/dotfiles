@@ -102,7 +102,7 @@ set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_DATA_HOME   "$HOME/.local/share"
 set -gx XDG_RUNTIME_DIR "$TMPDIR/.run"
 
-set -gx CARGO_HOME            "$XDG_CONFIG_HOME/rust/cargo"
+set -gx CARGO_HOME            "$XDG_DATA_HOME/rust/cargo"
 set -gx GNUPGHOME             "$XDG_CONFIG_HOME/gpg"
 set -gx MYVIMRC               "$XDG_CONFIG_HOME/nvim/init.vim"
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/npmrc"
