@@ -150,3 +150,13 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths           # Homebrew
 # GPG config
 # see: https://www.gnupg.org/documentation/manuals/gnupg/Common-Problems.html
 set -gx GPG_TTY (tty)
+
+# Install "Fisher" plugins to XDG_DATA_HOME
+set -g fisher_path "$XDG_DATA_HOME/fisher"
+
+set fish_function_path $fish_function_path[1] $fisher_path/functions $fish_function_path[2..-1]
+set fish_complete_path $fish_complete_path[1] $fisher_path/completions $fish_complete_path[2..-1]
+
+for file in $fisher_path/conf.d/*.fish
+    builtin source $file 2> /dev/null
+end
