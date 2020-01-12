@@ -1,4 +1,5 @@
 .DS_Store
+aws/config
 fish/conf.d/local.fish
 fish/fish_variables
 gpg/*

@@ -35,6 +35,7 @@ mkdir -p "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_RUNTIME_DIR
 
 pause 'Symlinking dotfiles to XDG paths.'
 ln -snf "$DOTFILES/alacritty"  "$XDG_CONFIG_HOME/alacritty"
+ln -snf "$DOTFILES/aws"        "$XDG_CONFIG_HOME/aws"
 ln -snf "$DOTFILES/fish"       "$XDG_CONFIG_HOME/fish"
 ln -snf "$DOTFILES/git"        "$XDG_CONFIG_HOME/git"
 ln -snf "$DOTFILES/gpg"        "$XDG_CONFIG_HOME/gpg"
@@ -54,8 +55,9 @@ pause 'Syncing configuration defaults.'
 curl -LSs http://git.io/JeZ1y > "$DOTFILES/alacritty/alacritty.default.yml"
 curl -LSs http://git.io/Jen71 > "$DOTFILES/macos.default.sh"
 
-pause 'Syncing local shell configuration'
-ln -snf "$HOME/Documents/App Sync/Fish/local.fish" "$XDG_CONFIG_HOME/fish/conf.d/local.fish"
+pause 'Syncing local shell configurations'
+ln -snf "$HOME/Documents/App Sync/dotfiles/fish/local.fish" "$XDG_CONFIG_HOME/fish/conf.d/local.fish"
+ln -snf "$HOME/Documents/App Sync/dotfiles/aws/config" "$XDG_CONFIG_HOME/aws/config"
 
 pause 'Installing Homebrew.'
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
