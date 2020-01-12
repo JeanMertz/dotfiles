@@ -18,6 +18,7 @@ brew "mas"
 brew "neovim"
 brew "node"
 brew "pinentry-mac"
+brew "python"
 brew "ripgrep"
 
 cask "1password-cli"
