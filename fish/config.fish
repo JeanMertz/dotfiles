@@ -97,6 +97,7 @@ set fish_pager_color_progress       brwhite --background=cyan
 set fish_pager_color_secondary      brgreen --background=magenta
 
 # commonly used folders
+set -gx DOTFILES  "$HOME/dotfiles"
 set -gx XDG_CACHE_HOME  "$HOME/.cache"
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_DATA_HOME   "$HOME/.local/share"
