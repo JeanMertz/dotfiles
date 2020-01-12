@@ -5,6 +5,7 @@ tap "homebrew/core"
 
 brew "awscli"
 brew "bat"
+brew "cmake"
 brew "diff-so-fancy"
 brew "fd"
 brew "fish"
