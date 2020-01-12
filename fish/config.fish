@@ -119,6 +119,13 @@ set -x LESS_TERMCAP_so (printf "\e[01;44;33m")
 set -x LESS_TERMCAP_ue (printf "\e[0m")
 set -x LESS_TERMCAP_us (printf "\e[01;32m")
 
+# AWS CLI XDG
+set -x AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config"
+set -x AWS_CLI_HISTORY_FILE "$XDG_DATA_HOME/aws/history"
+set -x AWS_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials"
+set -x AWS_WEB_IDENTITY_TOKEN_FILE "$XDG_CONFIG_HOME/aws/token"
+set -x AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/shared-credentials"
+
 # Default editor
 set -x VISUAL nvim
 set -x EDITOR nvim
