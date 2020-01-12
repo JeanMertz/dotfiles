@@ -12,6 +12,7 @@ brew "fd"
 brew "ffmpeg"
 brew "fish", args: ['HEAD']
 brew "fzf"
+brew "gifski"
 brew "git"
 brew "go"
 brew "golangci-lint"
