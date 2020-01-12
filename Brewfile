@@ -28,6 +28,7 @@ brew "youtube-dl"
 
 cask "1password-cli"
 cask "alacritty"
+cask "aws-vault"
 cask "bartender"
 cask "blender"
 cask "dash"
