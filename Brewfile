@@ -52,4 +52,5 @@ mas "Fantastical 2", id: 975937182
 mas "Pixelmator Pro", id: 1289583905
 mas "Slack", id: 803453959
 mas "Spark", id: 1176895641
+mas "Telegram", id: 747648890
 mas "Things 3", id: 904280696
