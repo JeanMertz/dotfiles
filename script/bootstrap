@@ -54,6 +54,9 @@ pause 'Syncing configuration defaults.'
 curl -LSs http://git.io/JeZ1y > "$DOTFILES/alacritty/alacritty.default.yml"
 curl -LSs http://git.io/Jen71 > "$DOTFILES/macos.default.sh"
 
+pause 'Syncing local shell configuration'
+ln -snf "$HOME/Documents/App Sync/Fish/local.fish" "$XDG_CONFIG_HOME/fish/conf.d/local.fish"
+
 pause 'Installing Homebrew.'
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 run brew doctor

@@ -1,4 +1,5 @@
 .DS_Store
+fish/conf.d/local.fish
 fish/fish_variables
 gpg/*
 !gpg/gpg-agent.conf
