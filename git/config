@@ -21,6 +21,8 @@
     compactionHeuristic = true
 [protocol]
     version = 2
+[push]
+    default = current
 [color]
     ui = true
 [color "diff-highlight"]
