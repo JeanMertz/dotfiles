@@ -20,6 +20,7 @@ brew "node"
 brew "pinentry-mac"
 brew "python"
 brew "ripgrep"
+brew "youtube-dl"
 
 cask "1password-cli"
 cask "alacritty"
