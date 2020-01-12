@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 
+brew "bat"
 brew "diff-so-fancy"
 brew "fd"
 brew "fish"
