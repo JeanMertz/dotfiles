@@ -40,6 +40,7 @@ cask "smoothscroll"
 cask "soulver"
 cask "tableplus"
 cask "tuple"
+cask "vlc"
 cask "qbserve"
 cask "zoomus"
 
