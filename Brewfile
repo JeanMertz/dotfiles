@@ -12,6 +12,7 @@ brew "fd"
 brew "ffmpeg"
 brew "fish", args: ['HEAD']
 brew "fzf"
+brew "gifsicle"
 brew "gifski"
 brew "git"
 brew "go"
