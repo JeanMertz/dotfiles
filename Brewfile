@@ -4,6 +4,7 @@ tap "homebrew/cask"
 tap "homebrew/core"
 
 brew "awscli"
+brew "b2-tools"
 brew "bat"
 brew "cmake"
 brew "diff-so-fancy"
