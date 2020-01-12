@@ -141,6 +141,7 @@ set -x LESS '--RAW-CONTROL-CHARS --tilde --chop-long-lines --ignore-case --tabs=
 set -gx HOMEBREW_NO_ANALYTICS 1
 
 # Add required PATH variable values
+set -g fish_user_paths
 set -g fish_user_paths (npm config get prefix)/bin $fish_user_paths # NPM
 set -g fish_user_paths (go env GOPATH) $fish_user_paths             # Go
 set -g fish_user_paths "$CARGO_HOME/bin" $fish_user_paths           # Cargo
