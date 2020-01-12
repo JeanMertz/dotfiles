@@ -60,6 +60,7 @@ mas "1Password", id: 1333542190
 mas "Bear", id: 1091189122
 mas "DaisyDisk", id: 411643860
 mas "Fantastical 2", id: 975937182
+mas "Gifox 2", id: 1461845568
 mas "Gifski", id: 1351639930
 mas "Pixelmator Pro", id: 1289583905
 mas "Slack", id: 803453959
