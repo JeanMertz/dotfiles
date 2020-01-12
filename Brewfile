@@ -9,7 +9,7 @@ brew "bat"
 brew "cmake"
 brew "diff-so-fancy"
 brew "fd"
-brew "fish"
+brew "fish", args: ['HEAD']
 brew "fzf"
 brew "git"
 brew "go"

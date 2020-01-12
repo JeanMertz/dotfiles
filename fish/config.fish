@@ -15,7 +15,12 @@ bash "$HOME/.config/fish/gruvbox_256palette.sh"
 
 # Remove all universal variables.
 for v in (set --show | string replace -rf '^\$([^:[]+).*: set in universal.*' '$1')
-    if test "$v" = "history" || test "$v" = "fish_key_bindings"
+    if test "$v" = "history" \
+       || test "$v" = "fish_key_bindings" \
+       || test "$v" = "__fish_initialized" \
+       || test "$v" = "PWD" \
+       || test "$v" = "pipestatus" \
+       || test "$v" = "status"
         continue
     end
 
